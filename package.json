@@ -11,5 +11,9 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "nuxt": "^3.7.3"
+  },
+  "dependencies": {
+    "@nuxtjs/eslint-module": "^4.1.0",
+    "eslint": "^8.49.0"
   }
 }
