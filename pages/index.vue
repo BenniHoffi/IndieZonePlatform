@@ -1,7 +1,8 @@
 <template>
     <div>
         <h1>Home</h1>
-        <Test />
+        <PrimeDemoForm />
+        <PrimeDemoToast />
         <NuxtLink to="/myshop">My shop</NuxtLink>
     </div>
 </template>

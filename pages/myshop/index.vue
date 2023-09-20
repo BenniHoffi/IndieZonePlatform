@@ -5,5 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-    import Dashboard from "./components/dashboard.vue"
+    definePageMeta({
+        title: "Mein Shop",
+        layout: "myshop",
+    })
 </script>
