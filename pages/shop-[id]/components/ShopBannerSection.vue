@@ -21,8 +21,35 @@
                     <span v-if="shop.rating > 4" class="material-symbols-outlined">star</span>
                 </div>
             </div>
+
             <div class="text-label-medium font-bold">
-                {{ shop.description }}
+                {{ shop.intro }}
+            </div>
+            <div>
+              TODO Öffnungszeiten
+            </div>
+            <div class ="text-label-small">
+              {{ shop.streetAdress }}
+            </div>
+            <div class ="text-label-small">
+              {{ shop.zip }} {{ shop.city }} (--km)
+            </div>
+            <div class="flex justify-between">
+              <div>
+                <div class ="text-label-small">
+                  {{ shop.phone }}
+                </div>
+                <div class ="text-label-small">
+                  {{ shop.email }}
+                </div>
+              </div>
+              <Button class="bg-bluegray-600 hover:bg-primary-hover border-bluegray-700" size="small" @click="">
+                <span class="material-symbols-outlined">chat</span>
+              </Button>
+            </div>
+            <div class="flex justify-around">
+              <Button label="Auf meine Route" size="small"></Button>
+              <Button label="Auf karte anzeigen" size="small" outlined></Button>
             </div>
         </div>
     </div>
