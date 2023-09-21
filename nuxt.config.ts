@@ -10,7 +10,7 @@ export default defineNuxtConfig({
         transpile: ["primevue"],
     },
     css: [
-        "/assets/css/google-fonts.css",
+        "~/assets/google/fonts.css",
         "primevue/resources/themes/md-light-indigo/theme.css",
         "primeicons/primeicons.css",
         "@sfxcode/formkit-primevue/dist/sass/formkit-prime-inputs.scss",
@@ -22,7 +22,7 @@ export default defineNuxtConfig({
             "Material Symbols Outlined": true,
         },
         fontsDir: "fonts",
-        stylePath: "css/google-fonts.css",
+        stylePath: "google/fonts.css",
         subsets: "latin",
         outputDir: "assets",
     },
