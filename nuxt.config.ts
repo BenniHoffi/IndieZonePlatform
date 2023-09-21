@@ -1,7 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: { enabled: true },
-    modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "@formkit/nuxt", "@sfxcode/nuxt-primevue"],
+    modules: [
+        "@nuxtjs/supabase",
+        "@nuxtjs/tailwindcss",
+        "@nuxtjs/google-fonts",
+        "@formkit/nuxt",
+        "@sfxcode/nuxt-primevue",
+        "@vueuse/nuxt",
+        "@nuxtjs/turnstile",
+        "@nuxt/image",
+    ],
+    plugins: [],
     components: ["~/components", ...scanComponentsDir(path.join(__dirname, "pages"))],
     imports: {
         dirs: ["pages/**/composables"],
@@ -10,7 +20,7 @@ export default defineNuxtConfig({
         transpile: ["primevue"],
     },
     css: [
-        "/assets/css/google-fonts.css",
+        "/assets/google-fonts/css/google-fonts.css",
         "primevue/resources/themes/md-light-indigo/theme.css",
         "primeicons/primeicons.css",
         "@sfxcode/formkit-primevue/dist/sass/formkit-prime-inputs.scss",
@@ -19,12 +29,20 @@ export default defineNuxtConfig({
     googleFonts: {
         families: {
             Montserrat: [400, 500, 600, 700],
-            "Material Symbols Outlined": true,
+            "Material Symbols Outlined": {
+                opsz: 24,
+                wght: 400,
+                fill: [0, 1],
+                grad: 0,
+            },
         },
         fontsDir: "fonts",
         stylePath: "css/google-fonts.css",
         subsets: "latin",
-        outputDir: "assets",
+        outputDir: "assets/google-fonts",
+    },
+    supabase: {
+        redirect: false,
     },
     hooks: {
         "pages:extend"(pages) {
