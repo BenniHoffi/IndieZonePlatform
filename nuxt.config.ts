@@ -37,7 +37,7 @@ export default defineNuxtConfig({
             },
         },
         fontsDir: "fonts",
-        stylePath: "css/google-fonts.css",
+        stylePath: "google/fonts.css",
         subsets: "latin",
         outputDir: "assets/google-fonts",
     },

@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-col h-screen w-full items-center">
+    <div class="flex flex-col items-center h-screen w-full">
         <MainHeader />
-        <main class="grow max-w-7xl">
+        <main class="grow lg:max-w-7xl">
             <slot />
         </main>
         <MainFooter />
