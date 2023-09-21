@@ -1,12 +1,11 @@
 <template>
-  <div class="font-montserrat flex flex-col h-screen w-full">
-    <MainHeader />
-    <main class="grow">
-      <slot />
-    </main>
-    <MainFooter />
-  </div>
+    <div class="font-montserrat flex flex-col items-center h-screen w-full">
+        <MainHeader />
+        <main class="grow lg:max-w-7xl">
+            <slot />
+        </main>
+        <MainFooter />
+    </div>
 </template>
 
-<script lang="ts" setup>
-</script>
+<script lang="ts" setup></script>
