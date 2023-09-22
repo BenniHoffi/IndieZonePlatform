@@ -6,6 +6,7 @@
     "bracketSpacing": true,
     "bracketSameLine": true,
     "arrowParens": "always",
-    "printWidth": 150,
-    "trailingComma": "es5"
+    "printWidth": 130,
+    "trailingComma": "es5",
+    "plugins": ["prettier-plugin-tailwindcss"]
 }

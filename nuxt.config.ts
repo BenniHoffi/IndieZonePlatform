@@ -47,7 +47,7 @@ export default defineNuxtConfig({
                 { name: "Chips", global: true },
                 { name: "Slider", global: true },
                 { name: "Knob", global: true },
-
+                "Divider",
                 "DataTable",
                 "FileUpload",
                 "Sidebar",

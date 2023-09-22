@@ -1,15 +1,15 @@
 <template>
-    <section class="flex flex-col w-full max-w-6xl md:flex-row md:items-end">
+    <section class="flex w-full max-w-6xl flex-col md:flex-row md:items-end">
         <div class="flex md:w-2/3">
             <div class="hidden w-1/5 items-start md:flex">
                 <button class="hidden md:block" @click="router.back()">
                     <Icon name="material-symbols:arrow-back" />
                 </button>
-                <div class="px-4 space-y-2">
-                    <img class="w-full h-auto" src="~/assets/dummyImages/shoppy.png" />
-                    <img class="w-full h-auto" src="~/assets/dummyImages/shoppy.png" />
-                    <img class="w-full h-auto" src="~/assets/dummyImages/shoppy.png" />
-                    <img class="w-full h-auto" src="~/assets/dummyImages/shoppy.png" />
+                <div class="space-y-2 px-4">
+                    <img class="h-auto w-full" src="~/assets/dummyImages/shoppy.png" />
+                    <img class="h-auto w-full" src="~/assets/dummyImages/shoppy.png" />
+                    <img class="h-auto w-full" src="~/assets/dummyImages/shoppy.png" />
+                    <img class="h-auto w-full" src="~/assets/dummyImages/shoppy.png" />
                 </div>
             </div>
             <div class="relative text-white md:w-4/5">
@@ -23,7 +23,7 @@
                 </button>
             </div>
         </div>
-        <div class="px-4 py-4 space-y-4 md:w-1/3 md:py-0">
+        <div class="space-y-4 px-4 py-4 md:w-1/3 md:py-0">
             <div class="space-y-1">
                 <div class="flex justify-between">
                     <h1 class="title-large">{{ shop.name }}</h1>
@@ -39,10 +39,13 @@
                 <div class="text-label-medium font-bold">
                     {{ shop.intro }}
                 </div>
-                <div class="flex text-label-small items-center gap-1">
+                <div class="flex items-center gap-1 text-label-small">
                     <Icon name="material-symbols:schedule-outline" />
                     Heute geöffnet bis 18:00 Uhr
-                    <button class="transition-transform" :class="openingHoursOpen ? 'rotate-90' : ''" @click="openingHoursOpen = !openingHoursOpen">
+                    <button
+                        class="transition-transform"
+                        :class="openingHoursOpen ? 'rotate-90' : ''"
+                        @click="openingHoursOpen = !openingHoursOpen">
                         <Icon name="material-symbols:arrow-right" />
                     </button>
                 </div>
@@ -55,7 +58,7 @@
 
                     <div class="text-label-small">{{ shop.zip }} {{ shop.city }} (--km)</div>
                 </div>
-                <div class="flex justify-between items-center">
+                <div class="flex items-center justify-between">
                     <div>
                         <div class="text-label-small">
                             {{ shop.phone }}
