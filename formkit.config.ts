@@ -10,11 +10,11 @@ const config: DefaultConfigOptions = {
     config: {
         classes: generateClasses({
             global: {
-                outer: "$reset",
+                outer: "$reset pb-4",
                 wrapper: "$reset",
             },
             "family:button": {
-                input: "bg-primary text-white rounded-lg px-6 py-4",
+                input: "bg-primary text-white rounded-lg px-6 py-3",
             },
         }),
     },

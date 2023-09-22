@@ -4,21 +4,8 @@ import formKitTailwind from "@formkit/themes/tailwindcss"
 
 export default <Partial<Config>>{
     plugins: [formKitTailwind],
-    content: [
-        // "./components/**/*.{vue,js,ts}",
-        // "./layouts/**/*.vue",
-        // "./pages/**/*.vue",
-        // "./composables/**/*.{js,ts}",
-        // "./plugins/**/*.{js,ts}",
-        // "./utils/**/*.{js,ts}",
-        // "./App.{js,ts,vue}",
-        // "./app.{js,ts,vue}",
-        // "./Error.{js,ts,vue}",
-        // "./error.{js,ts,vue}",
-        // "./app.config.{js,ts}",
-        "./node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}",
-        "./plugins/formkit-theme.ts",
-    ],
+    content: [`./formkit.config.ts`, `./node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}`],
+    important: true,
     theme: {
         screens: {
             xxs: "385px",

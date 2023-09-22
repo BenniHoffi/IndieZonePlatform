@@ -6,7 +6,7 @@ export default async function (shopID: string) {
     } = await useAsyncData("shop", async () => {
         const data = {
             name: "Herbert Hosen",
-            rating: "3",
+            rating: 3.5,
             intro: "Handverlesene Hosen für jeden Geschmack",
             streetAdress: "Arthur-Hoffmann-Straße 38",
             zip: "04106",

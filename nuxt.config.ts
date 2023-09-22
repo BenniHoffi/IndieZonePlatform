@@ -10,6 +10,8 @@ export default defineNuxtConfig({
         "@vueuse/nuxt",
         "@nuxtjs/turnstile",
         "@nuxt/image",
+        "@vite-pwa/nuxt",
+        "nuxt-icon",
     ],
     plugins: [],
     components: ["~/components", ...scanComponentsDir(path.join(__dirname, "pages"))],
@@ -21,46 +23,93 @@ export default defineNuxtConfig({
     },
     css: [
         "/assets/google-fonts/css/google-fonts.css",
-        "primevue/resources/themes/md-light-indigo/theme.css",
-        "primeicons/primeicons.css",
+        "/assets/css/primevue-theme.css",
         "@sfxcode/formkit-primevue/dist/sass/formkit-prime-inputs.scss",
         "@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss",
     ],
+    pwa: {},
+    primevue: {
+        components: {
+            include: [
+                { name: "Button", global: true },
+                { name: "Password", global: true },
+                { name: "InputText", global: true },
+                { name: "InputNumber", global: true },
+                { name: "InputMask", global: true },
+                { name: "InputSwitch", global: true },
+                { name: "Rating", global: true },
+                { name: "Textarea", global: true },
+                { name: "Calendar", global: true },
+                { name: "Dropdown", global: true },
+                { name: "Checkbox", global: true },
+                { name: "Textarea", global: true },
+                { name: "MultiSelect", global: true },
+                { name: "Chips", global: true },
+                { name: "Slider", global: true },
+                { name: "Knob", global: true },
+
+                "DataTable",
+                "FileUpload",
+                "Sidebar",
+                "ConfirmDialog",
+                "ConfirmPopup",
+                "Toast",
+                "Message",
+            ],
+        },
+        useFormkit: true,
+    },
     googleFonts: {
         families: {
             Montserrat: [400, 500, 600, 700],
-            "Material Symbols Outlined": {
-                opsz: 24,
-                wght: 400,
-                fill: [0, 1],
-                grad: 0,
-            },
         },
         fontsDir: "fonts",
-        stylePath: "google/fonts.css",
+        stylePath: "css/google-fonts.css",
         subsets: "latin",
         outputDir: "assets/google-fonts",
     },
     supabase: {
         redirect: false,
     },
-    hooks: {
-        "pages:extend"(pages) {
-            function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
-                const pagesToRemove = []
-                for (const page of pages) {
-                    if (pattern.test(page.file!)) {
-                        pagesToRemove.push(page)
-                    } else {
-                        removePagesMatching(pattern, page.children)
+    $production: {
+        hooks: {
+            "pages:extend"(pages) {
+                function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
+                    const pagesToRemove = []
+                    for (const page of pages) {
+                        if (pattern.test(page.file!)) {
+                            pagesToRemove.push(page)
+                        } else {
+                            removePagesMatching(pattern, page.children)
+                        }
+                    }
+                    for (const page of pagesToRemove) {
+                        pages.splice(pages.indexOf(page), 1)
                     }
                 }
-                for (const page of pagesToRemove) {
-                    pages.splice(pages.indexOf(page), 1)
+                removePagesMatching(/^.*\/components\/.*$/, pages)
+                removePagesMatching(/^.*\/composables\/.*$/, pages)
+            },
+        },
+    },
+    $development: {
+        hooks: {
+            "pages:extend"(pages) {
+                function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
+                    const pagesToRemove = []
+                    for (const page of pages) {
+                        if (pattern.test(page.file!)) {
+                            pagesToRemove.push(page)
+                        } else {
+                            removePagesMatching(pattern, page.children)
+                        }
+                    }
+                    for (const page of pagesToRemove) {
+                        pages.splice(pages.indexOf(page), 1)
+                    }
                 }
-            }
-            removePagesMatching(/^.*\/components\/.*$/, pages)
-            removePagesMatching(/^.*\/composables\/.*$/, pages)
+                removePagesMatching(/^.*\/composables\/.*$/, pages)
+            },
         },
     },
 })
