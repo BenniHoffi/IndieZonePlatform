@@ -79,6 +79,9 @@
                 <div class="flex justify-between gap-2">
                     <Button label="Auf meine Route" size="small" />
                     <Button label="Auf Karte anzeigen" size="small" outlined />
+                    <Button class="hidden text-secondary md:block" size="small">
+                        <Icon name="material-symbols:favorite-outline" />
+                    </Button>
                 </div>
             </div>
         </div>
