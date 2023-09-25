@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <ShopBannerSection :shop="shop"/>
+    <div class="flex w-screen flex-col items-center">
+        <ShopBannerSection :shop="shop" />
+        <ShopShowcaseSection />
+        <ShopDescriptionSection />
     </div>
 </template>
 
@@ -8,7 +10,7 @@
     definePageMeta({
         title: "shopname",
     })
-    const route = useRoute();
-    const shopID = route.params.id as string;
-    const {shop} = await useShopID(shopID);
+    const route = useRoute()
+    const shopID = route.params.id as string
+    const { shop } = await useShopID(shopID)
 </script>

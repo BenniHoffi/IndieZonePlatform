@@ -1,5 +1,5 @@
 <template>
-    <div class="font-montserrat text-primary">
+    <div class="w-screen font-montserrat text-primary">
         <Toast />
         <ConfirmDialog />
         <NuxtLayout>
