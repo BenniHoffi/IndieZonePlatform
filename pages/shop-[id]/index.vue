@@ -3,6 +3,7 @@
         <ShopBannerSection :shop="shop" />
         <ShopShowcaseSection />
         <ShopDescriptionSection />
+        <ShopCommentSection :shop="shop" />
     </div>
 </template>
 
