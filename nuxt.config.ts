@@ -13,7 +13,6 @@ export default defineNuxtConfig({
         "@vite-pwa/nuxt",
         "nuxt-icon",
     ],
-    plugins: [],
     components: ["~/components", ...scanComponentsDir(path.join(__dirname, "pages"))],
     imports: {
         dirs: ["pages/**/composables"],
@@ -27,7 +26,56 @@ export default defineNuxtConfig({
         "@sfxcode/formkit-primevue/dist/sass/formkit-prime-inputs.scss",
         "@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss",
     ],
-    pwa: {},
+    app: {
+        head: {
+            title: "IndieZone",
+            link: [{ rel: "icon", type: "image/x-icon", href: "/images/favicon.ico" }],
+        },
+    },
+    pwa: {
+        manifest: {
+            name: "IndieZone",
+            short_name: "IndieZone",
+            description: "IndieZone - online stöbern, lokal kaufen",
+            lang: "de",
+            theme_color: "#99D100",
+            background_color: "#ffffff",
+            icons: [
+                {
+                    src: "/images/pwa-64x64.png",
+                    sizes: "64x64",
+                    type: "image/png",
+                },
+                {
+                    src: "/images/pwa-192x192.png",
+                    sizes: "192x192",
+                    type: "image/png",
+                },
+                {
+                    src: "/images/pwa-512x512.png",
+                    sizes: "512x512",
+                    type: "image/png",
+                    purpose: "any maskable",
+                },
+            ],
+        },
+        workbox: {
+            navigateFallback: "/",
+            globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+        },
+        client: {
+            installPrompt: true,
+            // you don't need to include this: only for testing purposes
+            // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
+            // periodicSyncForUpdates: 20,
+        },
+        devOptions: {
+            enabled: true,
+            suppressWarnings: false,
+            navigateFallbackAllowlist: [/^\/$/],
+            type: "module",
+        },
+    },
     primevue: {
         components: {
             include: [

@@ -12,9 +12,9 @@
         </Message>
         <MyshopSidebar />
         <div class="grow transition-[padding]" :class="sidebarMinimized ? 'lg:pl-[84px]' : 'lg:pl-72'">
-            <div class="p-4 pt-12 lg:pt-4">
+            <main class="p-4 pt-12 lg:pt-4">
                 <slot />
-            </div>
+            </main>
         </div>
     </div>
 </template>

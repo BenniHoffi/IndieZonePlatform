@@ -1,4 +1,5 @@
 <template>
+    <VitePwaManifest />
     <div class="font-montserrat text-primary">
         <Toast />
         <ConfirmDialog />
