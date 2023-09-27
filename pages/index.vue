@@ -4,8 +4,6 @@
         <NuxtLink to="/myshop">My shop</NuxtLink>
         <br />
         <NuxtLink to="/shop-123">Shopansicht test</NuxtLink>
-        <PrimeDemoForm />
-        <PrimeDemoToast />
     </div>
 </template>
 
