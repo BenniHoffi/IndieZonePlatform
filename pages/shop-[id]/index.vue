@@ -1,8 +1,9 @@
 <template>
-    <div class="flex w-screen flex-col items-center">
+    <div class="flex w-full flex-col items-center">
         <ShopBannerSection :shop="shop" />
         <ShopShowcaseSection />
         <ShopDescriptionSection />
+        <ShopCommentSection :shop="shop" />
     </div>
 </template>
 
