@@ -81,8 +81,8 @@
             <div>
                 <div class="flex justify-between gap-2">
                     <Button label="Auf meine Route" size="small" />
-                    <Button label="Auf Karte anzeigen" size="small" outlined />
-                    <Button class="hidden text-secondary lg:block" size="small" @click="isFavourite = !isFavourite">
+                    <button label="Auf Karte anzeigen" size="small" outlined />
+                    <Button class="hidden p-0 text-secondary lg:block" size="small" @click="isFavourite = !isFavourite">
                         <Icon v-if="!isFavourite" name="material-symbols:favorite-outline" />
                         <Icon v-else name="material-symbols:favorite" />
                     </Button>
