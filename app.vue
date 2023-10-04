@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <VitePwaManifest />
+    <div class="w-full font-montserrat text-primary">
         <Toast />
         <ConfirmDialog />
         <NuxtLayout>
