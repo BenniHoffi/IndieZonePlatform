@@ -2,8 +2,8 @@
     <section class="mx-auto w-full max-w-4xl px-4 py-16">
         <div class="pb-2 pt-4 text-title-large text-primary">Wer wir sind</div>
         <p
-            class="overflow-hidden text-ellipsis text-body-medium text-primary transition-[height]"
-            :class="moreDescriptionShown ? '' : 'h-36'">
+            class="overflow-hidden text-ellipsis text-body-medium text-primary transition-[max-height]"
+            :class="moreDescriptionShown ? 'max-h-[1000px]' : 'max-h-36'">
             <!-- TODO: text langsamer! aufklappen -->
             Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute
