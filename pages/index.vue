@@ -6,6 +6,8 @@
         <NuxtLink to="/shop-123">Shopansicht test</NuxtLink>
         <br />
         <NuxtLink to="/product-123">Produktansicht test</NuxtLink>
+        <br />
+        <NuxtLink to="/homepageLoggedIn">Homepage Eingelogged test</NuxtLink>
     </div>
 </template>
 

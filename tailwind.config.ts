@@ -96,6 +96,7 @@ export default <Partial<Config>>{
                 "user-surface-container-low": "#F3F5ED",
                 "user-surface-container-high": "#E8EBE1",
                 "user-surface-container-highest": "#E3E5DA",
+                "light-tertiary": "#998763",
             },
         },
     },
