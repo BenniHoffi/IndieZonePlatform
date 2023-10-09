@@ -50,17 +50,7 @@
                     <button class="aspect-square h-10" @click="sidebarVisibility = true">
                         <Icon name="material-symbols:menu" />
                     </button>
-                    <div class="relative w-full">
-                        <button class="absolute right-0 aspect-square h-full" @click="console.log('Suche...')">
-                            <Icon name="material-symbols:search" />
-                        </button>
-                        <InputText
-                            placeholder="Suche"
-                            type="text"
-                            :pt="{
-                                root: { class: 'bg-container-dark w-full h-full border-0 rounded-xl focus:ring-2 ring-primary' },
-                            }" />
-                    </div>
+                    <MainSearchbar />
                 </div>
             </div>
         </div>
@@ -70,14 +60,7 @@
                     <button class="absolute right-0 aspect-square h-full" @click="console.log('Suche...')">
                         <Icon name="material-symbols:search" />
                     </button>
-                    <InputText
-                        placeholder="Suche"
-                        type="search"
-                        :pt="{
-                            root: {
-                                class: 'bg-container-dark w-full h-full border-0 rounded-xl focus:ring-2 ring-primary',
-                            },
-                        }" />
+                    <MainSearchbar />
                 </div>
                 <div class="flex h-full items-center gap-10 xl:gap-16">
                     <NuxtLink to="/products">Produkte</NuxtLink>

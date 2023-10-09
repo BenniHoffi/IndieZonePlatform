@@ -12,7 +12,7 @@
                     <!-- TODO: das shop.rating muss noch fett-gedruckt werden -->
                     <div class="pl-2 text-label-medium text-primary">{{ shop.rating }}</div>
                 </div>
-                <Button outlined @click="">
+                <Button text @click="">
                     <template #icon>
                         <Icon name="material-symbols:tune" />
                     </template>
