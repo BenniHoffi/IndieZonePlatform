@@ -1,6 +1,6 @@
 <template>
     <section class="flex w-full max-w-6xl flex-col lg:flex-row lg:items-end lg:py-16">
-        <div class="flex lg:w-2/3">
+        <div class="flex lg:w-7/12 xl:w-2/3">
             <div class="hidden w-1/5 items-start lg:flex">
                 <button class="hidden lg:block" @click="router.back()">
                     <Icon name="material-symbols:arrow-back" />
@@ -26,7 +26,7 @@
                 </button>
             </div>
         </div>
-        <div class="space-y-4 px-4 py-4 lg:w-1/3 lg:py-0">
+        <div class="space-y-4 px-4 py-4 lg:w-5/12 lg:py-0 xl:w-1/3">
             <div class="space-y-1">
                 <div class="flex justify-between">
                     <h1 class="title-large">{{ shop.name }}</h1>
@@ -79,12 +79,17 @@
                 <Button label="Zum Chat" class="hidden lg:block" size="small" outlined />
             </div>
             <div>
-                <div class="flex justify-between gap-2">
-                    <Button label="Auf meine Route" size="small" />
-                    <button label="Auf Karte anzeigen" size="small" outlined />
-                    <Button class="hidden p-0 text-secondary lg:block" size="small" @click="isFavourite = !isFavourite">
-                        <Icon v-if="!isFavourite" name="material-symbols:favorite-outline" />
-                        <Icon v-else name="material-symbols:favorite" />
+                <div class="flex gap-2 xl:justify-between">
+                    <Button class="px-2 py-2 text-label-large" label="Auf meine Route" size="small" />
+                    <Button class="px-2 py-2 text-label-large" label="Auf Karte anzeigen" size="small" outlined />
+                    <Button
+                        class="hidden aspect-square p-0 text-secondary lg:flex"
+                        size="small"
+                        @click="isFavourite = !isFavourite">
+                        <template #icon>
+                            <Icon v-if="!isFavourite" name="material-symbols:favorite-outline" />
+                            <Icon v-else name="material-symbols:favorite" />
+                        </template>
                     </Button>
                 </div>
             </div>
