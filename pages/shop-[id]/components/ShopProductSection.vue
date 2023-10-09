@@ -1,5 +1,5 @@
 <template>
-    <section class="mx-auto w-full max-w-6xl px-4 py-16">
+    <section class="mx-auto w-full max-w-6xl px-4 py-12">
         <div class="pb-4 text-title-large text-primary">Unsere Produkte</div>
         <MainSearchbar />
         <div class="flex items-center justify-between py-2">

@@ -1,5 +1,5 @@
 <template>
-    <section class="mx-auto w-full max-w-6xl px-4 py-16">
+    <section class="mx-auto w-full max-w-6xl px-4 py-12">
         <div class="text-title-large">Was Kunden über uns sagen</div>
         <div>
             <div class="flex items-center justify-between pt-2 text-secondary">

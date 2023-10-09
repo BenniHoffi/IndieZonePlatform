@@ -1,7 +1,20 @@
 <template>
-    <div class="flex w-full flex-col items-center">
+    <div class="flex w-full flex-col items-center gap-10">
         <ProductBannerSection :product="product" />
-        <ProductCommentSection :product="product" />
+
+        <div class="mx-auto w-full max-w-7xl">
+            <TabView class="w-full">
+                <TabPanel header="Beschreibung">
+                    <ProductDescriptionSection />
+                </TabPanel>
+                <TabPanel header="Laden">
+                    <ProductShopSection />
+                </TabPanel>
+                <TabPanel header="Bewertungen">
+                    <ProductCommentSection :product="product" />
+                </TabPanel>
+            </TabView>
+        </div>
     </div>
 </template>
 
