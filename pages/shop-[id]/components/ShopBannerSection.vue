@@ -31,11 +31,7 @@
                 <div class="flex justify-between">
                     <h1 class="title-large">{{ shop.name }}</h1>
                     <div class="flex text-secondary">
-                        <div v-for="index in 5">
-                            <Icon v-if="shop.rating >= index" name="material-symbols:star" />
-                            <Icon v-else-if="shop.rating == index - 0.5" name="material-symbols:star-half" />
-                            <Icon v-else name="material-symbols:star-outline" />
-                        </div>
+                        <RatingDisplay :rating="shop.rating" />
                     </div>
                 </div>
 

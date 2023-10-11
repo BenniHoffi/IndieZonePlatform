@@ -12,7 +12,7 @@
                     <ShopProductSection />
                 </TabPanel>
                 <TabPanel header="Bewertungen">
-                    <ShopCommentSection :shop="shop" />
+                    <CommentSection title="Was Kunden über uns sagen" :rating="shop!.rating" :comments="comments" />
                 </TabPanel>
             </TabView>
         </div>
@@ -20,6 +20,8 @@
 </template>
 
 <script lang="ts" setup>
+    import useComments from "~/composables/useComments"
+
     definePageMeta({
         title: "shopname",
     })
@@ -27,4 +29,5 @@
     const shopID = route.params.id as string
     const { shop } = await useShopID(shopID)
     const cards = await useProducts()
+    const comments = await useComments()
 </script>

@@ -23,7 +23,7 @@
             <div v-for="product in productArray" class="relative h-full rounded-lg bg-user-surface-container-low shadow-lg">
                 <img class="w-full rounded-t-lg" src="~/assets/dummyImages/mediaSmall.png" />
                 <!-- TODO: favourite button sollte noch togglen (irgendwann) -->
-                <button text class="absolute right-0 top-0 p-2" @click="">
+                <button class="absolute right-0 top-0 p-2" @click="">
                     <Icon name="material-symbols:favorite-outline" />
                 </button>
                 <div class="rounded-b-lg py-2 pl-4 text-body-small text-primary">

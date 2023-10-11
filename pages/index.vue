@@ -7,7 +7,9 @@
         <br />
         <NuxtLink to="/product-123">Produktansicht test</NuxtLink>
         <br />
-        <ShowcaseSection title="Schaofenster" :cards="cards" />
+        <ShowcaseSection title="Neu in deiner IndieZone" :cards="cards" bgColor="bg-secondary" />
+        <ShowcaseSection title="Eure Lieblinge" :cards="cards" />
+        <ShowcaseSection title="Wir empfehlen" :cards="cards" bgColor="bg-tertiary" />
     </div>
 </template>
 

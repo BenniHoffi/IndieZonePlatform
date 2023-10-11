@@ -11,7 +11,7 @@
                     <ProductShopSection />
                 </TabPanel>
                 <TabPanel header="Bewertungen">
-                    <ProductCommentSection :product="product" />
+                    <CommentSection :rating="product!.rating" :comments="comments" />
                 </TabPanel>
             </TabView>
         </div>
@@ -20,6 +20,7 @@
 
 <script lang="ts" setup>
     // TODO: Warum brauch ich hier einen Import und für shop-[id] nischt?
+    import useComments from "~/composables/useComments"
     import useProductID from "./composables/useProductID"
 
     definePageMeta({
@@ -28,4 +29,5 @@
     const route = useRoute()
     const productID = route.params.id as string
     const { product } = await useProductID(productID)
+    const comments = await useComments()
 </script>
