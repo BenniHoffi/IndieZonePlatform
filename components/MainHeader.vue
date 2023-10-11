@@ -2,20 +2,6 @@
     <header class="w-full">
         <div class="pb-44 lg:hidden">
             <Sidebar v-model:visible="sidebarVisibility" class="flex flex-col gap-4 p-4">
-                <DevOnly>
-                    <div v-if="user">
-                        <div>email: {{ user.email }}</div>
-                        <div>id: {{ user.id }}</div>
-                        <div>claims_admin: {{ user.app_metadata.claims_admin }}</div>
-                        <div>shopowner: {{ user.app_metadata.shopowner }}</div>
-                    </div>
-                    <br />
-                    <button @click="createShop()">Create Shop</button>
-                    <br />
-                    <button @click="deleteShop()">Delete Shop</button>
-                    <br />
-                    <br />
-                </DevOnly>
                 <ul>
                     <li v-if="user?.app_metadata.claims_admin">
                         <NuxtLink to="/admin">Admin Dashboard</NuxtLink>
@@ -88,7 +74,8 @@
                     <NuxtLink :to="user ? '/user' : '/login'">
                         <div class="flex flex-col items-center">
                             <Icon name="material-symbols:person-outline" />
-                            Login
+                            <div v-if="user">Profil</div>
+                            <div v-else>Login</div>
                         </div>
                     </NuxtLink>
                 </div>
@@ -99,37 +86,6 @@
 
 <script lang="ts" setup>
     const user = useSupabaseUser()
-    const client = useSupabaseClient<Database>()
 
     const sidebarVisibility = ref(false)
-
-    async function createShop() {
-        const { data, error } = await client.from("shops").insert({
-            name: "Test Shop",
-            shopowner_name: "Test Shopowner",
-            description: "Test Description",
-            category: "Test Category",
-            street_adress: "Test Street",
-            city: "Test City",
-            zip_code: "Test Zip",
-            country: "Text Country",
-            telephone: "Test Telephone",
-            opening_hours: [[]],
-            owner_id: user.value!.id,
-        })
-        if (error) {
-            console.error(error)
-        } else {
-            console.log(data)
-        }
-    }
-
-    async function deleteShop() {
-        const { data, error } = await client.from("shops").delete().eq("id", user.value!.app_metadata.shopowner)
-        if (error) {
-            console.error(error)
-        } else {
-            console.log(data)
-        }
-    }
 </script>

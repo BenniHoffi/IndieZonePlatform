@@ -12,6 +12,7 @@ const config: DefaultConfigOptions = {
             global: {
                 outer: "$reset pb-4",
                 wrapper: "$reset",
+                inner: "$reset",
             },
             "family:button": {
                 input: "bg-primary text-white rounded-lg px-6 py-3",
