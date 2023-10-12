@@ -2,6 +2,7 @@
     <div class="w-full">
         <FormKit type="form" id="loginForm" @submit="signIn" submit-label="Einloggen">
             <FormKitSchema :schema="schema" />
+            <NuxtTurnstile v-model="turnstileToken" />
         </FormKit>
     </div>
 </template>
@@ -11,10 +12,16 @@
     const toast = useToast()
     const supabase = useSupabaseClient()
 
-    async function signIn(loginData: { email: string; password: string }) {
+    const turnstileToken = ref()
+
+    async function signIn(loginData: any) {
+        console.log(loginData)
         const { error } = await supabase.auth.signInWithPassword({
             email: loginData.email,
             password: loginData.password,
+            options: {
+                captchaToken: turnstileToken.value,
+            },
         })
         if (error) {
             toast.add({

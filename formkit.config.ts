@@ -13,6 +13,7 @@ const config: DefaultConfigOptions = {
                 outer: "$reset pb-4",
                 wrapper: "$reset",
                 inner: "$reset",
+                label: "$reset text-label-large font-bold",
             },
             "family:button": {
                 input: "bg-primary text-white rounded-lg px-6 py-3",
