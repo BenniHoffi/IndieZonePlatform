@@ -1,5 +1,5 @@
 <template>
-    <div class="flex w-full max-w-screen-xl flex-col items-center gap-2">
+    <div class="flex w-full max-w-screen-xl flex-col items-center gap-2 p-4">
         <h1 class="text-3xl font-bold">Kategorieneditor</h1>
         <Tree v-model:expanded-keys="expandedKeys" :value="nodes" class="w-full">
             <template #default="{ node }">

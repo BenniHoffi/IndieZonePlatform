@@ -106,6 +106,7 @@ export default defineNuxtConfig({
                 "Message",
                 "Tree",
                 "Chip",
+                "Column",
             ],
         },
         useFormkit: true,

@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full max-w-screen-xl">
+    <div class="w-full max-w-screen-xl p-4">
         <h1>Attributeditor</h1>
         <div class="mb-2">
             <Button label="Attribut hinzufügen" icon="pi pi-plus" @click="addAttribute()" />
