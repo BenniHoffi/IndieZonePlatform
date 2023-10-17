@@ -1,8 +1,5 @@
 create extension if not exists "http" with schema "extensions";
 
-
-create extension if not exists "supabase-dbdev" with schema "public" version '0.0.3';
-
 drop trigger if exists "on_user_create" on "public"."attributes";
 
 drop trigger if exists "on_shop_delete" on "public"."shops";
