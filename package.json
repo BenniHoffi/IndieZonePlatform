@@ -20,6 +20,7 @@
         "supabase": "^1.99.5"
     },
     "dependencies": {
+        "@formkit/addons": "^1.2.2",
         "@formkit/nuxt": "^1.0.0",
         "@formkit/themes": "^1.0.0",
         "@nuxt/image": "^1.0.0-rc.2",
