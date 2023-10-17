@@ -6,6 +6,10 @@
         <NuxtLink to="/shop-123">Shopansicht test</NuxtLink>
         <br />
         <NuxtLink to="/product-123">Produktansicht test</NuxtLink>
+        <br />
+        <ShowcaseSection title="Neu in deiner IndieZone" :cards="cards" bgColor="bg-secondary" />
+        <ShowcaseSection title="Eure Lieblinge" :cards="cards" />
+        <ShowcaseSection title="Wir empfehlen" :cards="cards" bgColor="bg-tertiary" />
     </div>
 </template>
 
@@ -13,4 +17,6 @@
     definePageMeta({
         title: "Home",
     })
+
+    const cards = useProducts()
 </script>

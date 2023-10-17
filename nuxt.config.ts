@@ -33,6 +33,10 @@ export default defineNuxtConfig({
             link: [{ rel: "icon", type: "image/x-icon", href: "/images/favicon.ico" }],
         },
     },
+    vue: {
+        defineModel: true,
+        propsDestructure: true,
+    },
     pwa: {
         manifest: {
             name: "IndieZone",
@@ -104,6 +108,8 @@ export default defineNuxtConfig({
                 "ConfirmPopup",
                 "Toast",
                 "Message",
+                "TabView",
+                "TabPanel",
                 "Tree",
                 "Chip",
                 "Column",
