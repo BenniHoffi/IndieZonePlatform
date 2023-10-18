@@ -4,6 +4,7 @@ import { de } from "@formkit/i18n"
 import { generateClasses } from "@formkit/themes"
 import { createMultiStepPlugin } from "@formkit/addons"
 import { genesisIcons } from "@formkit/icons"
+import myTailwindTheme from "./formkit-tailwind-theme"
 import "@formkit/addons/css/multistep.css"
 
 const config: DefaultConfigOptions = {
@@ -13,17 +14,7 @@ const config: DefaultConfigOptions = {
     locale: "de",
     icons: { ...genesisIcons },
     config: {
-        classes: generateClasses({
-            global: {
-                outer: "$reset pb-4",
-                wrapper: "$reset",
-                inner: "$reset",
-                label: "$reset text-label-large font-bold",
-            },
-            "family:button": {
-                input: "bg-primary text-white rounded-lg px-6 py-3",
-            },
-        }),
+        classes: generateClasses(myTailwindTheme),
     },
 }
 
