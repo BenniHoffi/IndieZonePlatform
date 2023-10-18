@@ -60,4 +60,10 @@ pnpm run preview
 yarn preview
 ```
 
+## Generate supabase types
+
+```bash
+npx supabase gen types typescript --project-id "gljseuqrtarlfeeciqmv" --schema public > composables/supabaseTypes.ts
+```
+
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

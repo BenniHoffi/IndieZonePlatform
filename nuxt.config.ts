@@ -13,6 +13,10 @@ export default defineNuxtConfig({
         "@vite-pwa/nuxt",
         "nuxt-icon",
     ],
+    vue: {
+        defineModel: true,
+        propsDestructure: true,
+    },
     components: ["~/components", ...scanComponentsDir(path.join(__dirname, "pages"))],
     imports: {
         dirs: ["pages/**/composables"],
@@ -105,8 +109,11 @@ export default defineNuxtConfig({
                 "Toast",
                 "Message",
                 "Tree",
+                "Chips",
                 "Chip",
                 "Column",
+                "Dialog",
+                "ProgressSpinner",
             ],
         },
         useFormkit: true,

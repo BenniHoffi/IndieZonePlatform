@@ -1,7 +1,7 @@
 <template>
-    <div class="p-4">
-        <h1>Shops</h1>
-        <DataTable :value="shops">
+    <div class="flex w-full max-w-screen-xl flex-col items-center gap-4">
+        <h1 class="text-display-medium font-bold">Shops</h1>
+        <DataTable :value="shops" class="w-full">
             <Column field="name" header="Name des Ladens" />
             <Column field="shopowner_name" header="Name des Besitzers" />
             <Column field="city" header="Stadt" />
@@ -16,7 +16,7 @@
                         dismissable-mask
                         :header="slotProps.data.shopname"
                         class="w-11/12 max-w-6xl">
-                        <object type="application/pdf" :data="pdfURL" class="h-[750px] w-full" />
+                        <object type="application/pdf" :data="<string>pdfURL" class="h-[750px] w-full" />
                     </Dialog>
                 </template>
             </Column>
