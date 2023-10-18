@@ -1,5 +1,5 @@
 <template>
-    <section class="flex w-full max-w-6xl flex-col lg:flex-row lg:items-end lg:py-16">
+    <section class="flex w-full max-w-7xl flex-col lg:flex-row lg:items-end lg:py-16">
         <div class="flex lg:w-7/12 xl:w-2/3">
             <div class="hidden w-1/5 items-start lg:flex">
                 <button class="hidden lg:block" @click="router.back()">
@@ -31,11 +31,7 @@
                 <div class="flex justify-between">
                     <h1 class="title-large">{{ shop.name }}</h1>
                     <div class="flex text-secondary">
-                        <div v-for="index in 5">
-                            <Icon v-if="shop.rating >= index" name="material-symbols:star" />
-                            <Icon v-else-if="shop.rating == index - 0.5" name="material-symbols:star-half" />
-                            <Icon v-else name="material-symbols:star-outline" />
-                        </div>
+                        <RatingDisplay :rating="shop.rating" />
                     </div>
                 </div>
 
@@ -80,8 +76,8 @@
             </div>
             <div>
                 <div class="flex gap-2 xl:justify-between">
-                    <Button class="px-2 py-2 text-label-large" label="Auf meine Route" size="small" />
-                    <Button class="px-2 py-2 text-label-large" label="Auf Karte anzeigen" size="small" outlined />
+                    <Button label="Auf meine Route" size="small" />
+                    <Button label="Auf Karte anzeigen" size="small" outlined />
                     <Button
                         class="hidden aspect-square p-0 text-secondary lg:flex"
                         size="small"
