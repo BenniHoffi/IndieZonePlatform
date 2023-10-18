@@ -24,6 +24,7 @@ export default defineNuxtConfig({
         "/assets/google-fonts/css/google-fonts.css",
         "/assets/css/primevue-theme.css",
         "primeicons/primeicons.css",
+        "@formkit/addons/css/multistep.css",
         "@sfxcode/formkit-primevue/dist/sass/formkit-prime-inputs.scss",
         "@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss",
     ],
@@ -80,6 +81,9 @@ export default defineNuxtConfig({
             navigateFallbackAllowlist: [/^\/$/],
             type: "module",
         },
+    },
+    formkit: {
+        autoImport: true,
     },
     primevue: {
         components: {

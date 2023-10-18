@@ -3,13 +3,15 @@ import { primeInputs } from "@sfxcode/formkit-primevue"
 import { de } from "@formkit/i18n"
 import { generateClasses } from "@formkit/themes"
 import { createMultiStepPlugin } from "@formkit/addons"
-import "@formkit/addons/css/multistep"
+import { genesisIcons } from "@formkit/icons"
+import "@formkit/addons/css/multistep.css"
 
 const config: DefaultConfigOptions = {
     plugins: [createMultiStepPlugin()],
     inputs: primeInputs,
     locales: { de },
     locale: "de",
+    icons: { ...genesisIcons },
     config: {
         classes: generateClasses({
             global: {

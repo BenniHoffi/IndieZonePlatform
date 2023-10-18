@@ -1,19 +1,52 @@
 <template>
-    <FormKit type="multi-step" tab-style="progress">
-        <FormKit type="step" name="stepOne" label="Custom Label">
-            <FormKit type="text" label="Name" validation="required" />
+    <FormKit type="form" :actions="false">
+        <FormKit type="multi-step" tab-style="progress" :hide-progress-labels="false">
+            <FormKit type="step" name="stepOne">
+                <FormKitSchema :schema="schemaStep1" />
+            </FormKit>
+            <FormKit type="step" name="stepTwo">
+                <FormKitSchema :schema="schemaStep1" />
+            </FormKit>
+            <FormKit type="step" name="stepThree">
+                <FormKitSchema :schema="schemaStep1" />
 
-            <div class="text-secondary">Cool dass das geht</div>
-        </FormKit>
-        <FormKit type="step" name="stepTwo">
-            <FormKit type="textarea" label="Your story" validation="required" />
-        </FormKit>
-        <FormKit type="step" name="stepThree">
-            <FormKit type="textarea" label="Something else" validation="required" />
-
-            <template #stepNext>
-                <FormKit type="submit" />
-            </template>
+                <template #stepNext>
+                    <FormKit type="submit" />
+                </template>
+            </FormKit>
         </FormKit>
     </FormKit>
 </template>
+<script setup lang="ts">
+    const schemaStep1 = [
+        {
+            $formkit: "primeInputText",
+            name: "name",
+            label: "Name",
+            validation: "length:6",
+            placeholder: "Name",
+            class: "w-full",
+        },
+    ]
+
+    const schemaStep2 = [
+        {
+            $formkit: "primeInputText",
+            name: "name",
+            label: "Name",
+            validation: "length:6",
+            placeholder: "Name",
+            class: "w-full",
+        },
+    ]
+    const schemaStep3 = [
+        {
+            $formkit: "primeInputText",
+            name: "name",
+            label: "Name",
+            validation: "length:6",
+            placeholder: "Name",
+            class: "w-full",
+        },
+    ]
+</script>
