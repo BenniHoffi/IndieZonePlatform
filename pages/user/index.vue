@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center p-4">
         <div>
-            <NuxtLink v-if="'158a70e3-64c0-49a5-b52f-37ed2b9b9b80' in groups" to="/admin">Admin</NuxtLink>
+            <NuxtLink v-if="groups && '158a70e3-64c0-49a5-b52f-37ed2b9b9b80' in groups" to="/admin">Admin</NuxtLink>
         </div>
         <div>{{ groups }}</div>
         <Button label="Ausloggen" @click="signOut" />
@@ -14,6 +14,7 @@
     definePageMeta({
         title: "Profil",
         middleware: ["auth"],
+        layout: "user",
     })
 
     const user = useSupabaseUser()

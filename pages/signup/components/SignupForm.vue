@@ -36,7 +36,7 @@
                 life: 5000,
             })
         } else {
-            navigateTo("/confirmEmail")
+            navigateTo("/signup/confirmEmail")
         }
     }
 

@@ -11,6 +11,8 @@
         <br />
         <NuxtLink to="/homepageLoggedIn">Homepage logged in Test</NuxtLink>
         <br />
+        <NuxtLink to="/user">Deine Zone Test</NuxtLink>
+        <br />
         <ShowcaseSection title="Neu in deiner IndieZone" :cards="cards" bgColor="bg-secondary" />
         <ShowcaseSection title="Eure Lieblinge" :cards="cards" />
         <ShowcaseSection title="Wir empfehlen" :cards="cards" bgColor="bg-tertiary" />
