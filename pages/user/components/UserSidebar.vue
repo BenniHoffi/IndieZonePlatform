@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="relative">
         <Transition>
             <div v-if="!open" class="absolute rounded-br-xl bg-user-surface-container p-2 text-primary lg:hidden">
                 <Icon name="material-symbols:menu" @click="open = true" />
