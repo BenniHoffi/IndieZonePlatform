@@ -9,9 +9,7 @@ export default async function () {
         refresh: refreshRoles,
         pending: rolesPending,
     } = useAsyncData("roles", async () => {
-        const { data, error } = await supabase
-            .from("users")
-            .select("id, name, username, email, group_users( roles ), groups (name)")
+        const { data, error } = await supabase.from("users").select("id, name, username, email, groups")
         if (error) {
             toast.add({
                 severity: "error",

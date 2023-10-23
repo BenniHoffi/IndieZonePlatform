@@ -10,7 +10,7 @@ interface I18n {
     en: string
 }
 
-interface minMax {
+interface MinMax {
     min: number
     max: number
 }
@@ -19,7 +19,7 @@ interface CategoryAttribute {
     id: number
     name: I18n
     type: string
-    values: I18n[] | minMax
+    values: I18n[] | MinMax
 }
 
 interface Category {

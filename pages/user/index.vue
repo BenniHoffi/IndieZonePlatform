@@ -13,7 +13,7 @@
 
     definePageMeta({
         title: "Profil",
-        middleware: ["auth"],
+        middleware: ["refresh-session", "auth"],
     })
 
     const user = useSupabaseUser()
