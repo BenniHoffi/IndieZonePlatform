@@ -120,7 +120,6 @@ export default defineNuxtConfig({
                 "Column",
                 "Card",
                 "Dialog",
-                "Dialog",
                 "ProgressSpinner",
             ],
         },
