@@ -36,7 +36,7 @@
                 life: 5000,
             })
         } else {
-            navigateTo("/confirmEmail")
+            navigateTo("/signup/confirmEmail")
         }
     }
 
@@ -66,6 +66,7 @@
             label: "Geburtstag",
             validation: "required",
             dateFormat: "dd.mm.yy",
+            view: "year",
             showIcon: true,
             maxDate: dateBefore,
             touchUI: true,

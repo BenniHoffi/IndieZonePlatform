@@ -113,6 +113,8 @@ export default defineNuxtConfig({
                 "Tree",
                 "Chip",
                 "Column",
+                "Card",
+                "Dialog",
             ],
         },
         useFormkit: true,

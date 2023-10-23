@@ -61,3 +61,23 @@ yarn preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Supabase
+
+### Test Helpers
+
+[Github link](https://github.com/usebasejump/supabase-test-helpers)
+
+[Blogpost](https://usebasejump.com/blog/testing-on-supabase-with-pgtap#rls-testing)
+
+### RLS Performance
+
+[Github link](https://github.com/GaryAustin1/RLS-Performance#tools-to-measure-performance)
+
+### Custom Claims (not used)
+
+[Github link](https://github.com/supabase-community/supabase-custom-claims)
+
+### Tenant RBAC
+
+[Github link](https://github.com/point-source/supabase-tenant-rbac)
