@@ -4,7 +4,7 @@ import formKitTailwind from "@formkit/themes/tailwindcss"
 
 export default <Partial<Config>>{
     plugins: [formKitTailwind],
-    content: [`./formkit.config.ts`, `./node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}`],
+    content: [`./formkit-tailwind-theme.ts`, `./node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}`],
     important: true,
     theme: {
         screens: {
@@ -28,7 +28,7 @@ export default <Partial<Config>>{
                 "title-small": ["14px", { lineHeight: "20px" }],
                 "label-large": ["14px", { lineHeight: "20px" }],
                 "label-medium": ["12px", { lineHeight: "16px" }],
-                "label-small": ["11px", { lineHeight: "16px" }],
+                "label-small": ["11px", { lineHeight: "14px" }],
                 "body-large": ["16px", { lineHeight: "24px" }],
                 "body-medium": ["14px", { lineHeight: "20px" }],
                 "body-small": ["12px", { lineHeight: "16px" }],

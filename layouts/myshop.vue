@@ -5,8 +5,6 @@
 </script>
 <template>
     <div>
-        <Toast />
-        <ConfirmDialog />
         <Message v-if="!shopData?.verified" :class="sidebarMinimized ? 'lg:pl-[84px]' : 'lg:pl-72'">
             Ihr Laden ist noch nicht verifiziert. Sie können in der Zwischenzeit schon bis zu 50 Produkte einstellen.
         </Message>
