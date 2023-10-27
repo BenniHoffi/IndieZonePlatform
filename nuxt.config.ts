@@ -12,6 +12,7 @@ export default defineNuxtConfig({
         "@nuxt/image",
         "@vite-pwa/nuxt",
         "nuxt-icon",
+        "nuxt-mapbox",
     ],
     vue: {
         defineModel: true,
@@ -20,6 +21,11 @@ export default defineNuxtConfig({
     components: ["~/components", ...scanComponentsDir(path.join(__dirname, "pages"))],
     imports: {
         dirs: ["pages/**/composables"],
+    },
+    runtimeConfig: {
+        public: {
+            mapboxApiToken: "",
+        },
     },
     build: {
         transpile: ["primevue"],
@@ -81,6 +87,9 @@ export default defineNuxtConfig({
             type: "module",
         },
     },
+    mapbox: {
+        accessToken: process.env.NUXT_PUBLIC_MAPBOX_API_TOKEN,
+    },
     primevue: {
         components: {
             include: [
@@ -117,6 +126,7 @@ export default defineNuxtConfig({
                 "Card",
                 "Dialog",
                 "ProgressSpinner",
+                "AutoComplete",
             ],
         },
         useFormkit: true,
