@@ -7,24 +7,18 @@
             <div
                 v-else
                 :class="minimized ? 'w-[80px] px-3' : 'w-72 px-5'"
-                class="fixed left-0 top-0 flex h-screen cursor-pointer flex-col justify-around overflow-hidden whitespace-nowrap rounded-r-2xl bg-user-surface-container py-10 text-primary transition-all">
+                class="fixed left-0 top-0 flex h-screen flex-col justify-around overflow-hidden whitespace-nowrap rounded-r-2xl bg-user-surface-container py-10 text-primary transition-all">
                 <div class="absolute right-4 top-4 lg:hidden" @click="open = false">
                     <Icon name="material-symbols:close" />
                 </div>
                 <div>
                     <div class="flex w-full flex-col gap-3">
-                        <NuxtLink
-                            to="/homepageLoggedIn"
-                            :class="[
-                                {
-                                    'bg-primary text-user-surface-container hover:text-primary': route.fullPath === '/shop',
-                                    'justify-center': minimized,
-                                },
-                            ]"
-                            class="flex h-9 w-full items-center gap-3 rounded-lg px-3 py-1 text-3xl hover:bg-user-surface-dim">
+                        <div
+                            :class="minimized ? 'justify-center' : ''"
+                            class="flex h-9 w-full select-none items-center gap-3 rounded-lg px-3 py-1 text-3xl">
                             <Icon name="material-symbols:home" />
                             <div v-if="!minimized">Deine Zone</div>
-                        </NuxtLink>
+                        </div>
                         <NuxtLink
                             to="/"
                             :class="minimized ? 'justify-center' : ''"
@@ -37,13 +31,8 @@
                     <div class="flex flex-col gap-3">
                         <NuxtLink
                             to="/user/favorites"
-                            :class="[
-                                {
-                                    'bg-primary text-user-surface-container hover:text-primary':
-                                        route.fullPath === '/user/favorites',
-                                    'justify-center': minimized,
-                                },
-                            ]"
+                            :class="minimized ? 'justify-center' : ''"
+                            active-class="bg-primary text-user-surface-container hover:bg-primary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-user-surface-dim"
                             v-tooltip="minimized ? 'Favoriten' : ''">
                             <Icon name="material-symbols:interests" />
@@ -51,13 +40,8 @@
                         </NuxtLink>
                         <NuxtLink
                             to="/user/calendar"
-                            :class="[
-                                {
-                                    'bg-primary text-user-surface-container hover:text-primary':
-                                        route.fullPath === '/user/calendar',
-                                    'justify-center': minimized,
-                                },
-                            ]"
+                            :class="minimized ? 'justify-center' : ''"
+                            active-class="bg-primary text-user-surface-container hover:bg-primary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-user-surface-dim"
                             v-tooltip="minimized ? 'Kalender' : ''">
                             <Icon name="material-symbols:calendar-today-rounded" />
@@ -65,13 +49,8 @@
                         </NuxtLink>
                         <NuxtLink
                             to="/user/messages"
-                            :class="[
-                                {
-                                    'bg-primary text-user-surface-container hover:text-primary':
-                                        route.fullPath === '/user/messages',
-                                    'justify-center': minimized,
-                                },
-                            ]"
+                            :class="minimized ? 'justify-center' : ''"
+                            active-class="bg-primary text-user-surface-container hover:bg-primary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-user-surface-dim"
                             v-tooltip="minimized ? 'Nachrichten' : ''">
                             <Icon name="material-symbols:chat-bubble" />
@@ -79,13 +58,8 @@
                         </NuxtLink>
                         <NuxtLink
                             to="/user/feedback"
-                            :class="[
-                                {
-                                    'bg-primary text-user-surface-container hover:text-primary':
-                                        route.fullPath === '/user/feedback',
-                                    'justify-center': minimized,
-                                },
-                            ]"
+                            :class="minimized ? 'justify-center' : ''"
+                            active-class="bg-primary text-user-surface-container hover:bg-primary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-user-surface-dim"
                             v-tooltip="minimized ? 'Bewerten' : ''">
                             <Icon name="material-symbols:storefront" />
@@ -93,12 +67,8 @@
                         </NuxtLink>
                         <NuxtLink
                             to="/user/score"
-                            :class="[
-                                {
-                                    'bg-primary text-user-surface-container hover:text-primary': route.fullPath === '/user/score',
-                                    'justify-center': minimized,
-                                },
-                            ]"
+                            :class="minimized ? 'justify-center' : ''"
+                            active-class="bg-primary text-user-surface-container hover:bg-primary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-user-surface-dim"
                             v-tooltip="minimized ? 'Punkteübersicht' : ''">
                             <Icon name="material-symbols:circles" />
@@ -109,12 +79,8 @@
                 <div :class="minimized ? '' : 'w-full'" class="flex flex-col gap-3">
                     <NuxtLink
                         to="/shop/account"
-                        :class="[
-                            {
-                                'bg-secondary text-black hover:bg-secondary': route.fullPath === '/shop/account',
-                                'justify-center': minimized,
-                            },
-                        ]"
+                        :class="minimized ? 'justify-center' : ''"
+                        active-class="bg-primary text-user-surface-container hover:bg-primary"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-user-surface-dim"
                         v-tooltip="minimized ? 'Mein Account' : ''">
                         <Icon name="material-symbols:account-circle" />
@@ -122,12 +88,8 @@
                     </NuxtLink>
                     <NuxtLink
                         to="/shop/settings"
-                        :class="[
-                            {
-                                'bg-secondary text-black hover:bg-secondary': route.fullPath === '/shop/settings',
-                                'justify-center': minimized,
-                            },
-                        ]"
+                        :class="minimized ? 'justify-center' : ''"
+                        active-class="bg-primary text-user-surface-container hover:bg-primary"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-user-surface-dim"
                         v-tooltip="minimized ? 'Einstellungen' : ''">
                         <Icon name="material-symbols:settings" />
@@ -147,6 +109,4 @@
 <script setup lang="ts">
     const open = ref(true)
     const minimized = useState<boolean>("usersidebarMinimized", () => false)
-
-    const route = useRoute()
 </script>

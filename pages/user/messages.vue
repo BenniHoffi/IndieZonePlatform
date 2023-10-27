@@ -1,35 +1,37 @@
 <template>
-    <div class="flex h-full w-full justify-center gap-10 text-primary">
-        <div class="flex h-full w-full flex-col items-center gap-8">
+    <div class="flex h-full w-full min-w-fit justify-center text-primary xl:gap-4">
+        <!-- Nachrichten -->
+        <div class="flex h-full w-full flex-col items-center gap-8 p-4">
             <div class="w-full py-12 text-display-medium">Nachrichten</div>
-            <div class="flex h-full w-full flex-col-reverse overflow-auto rounded-xl bg-surface-bright p-4" ref="el">
-                <div
-                    v-if="openChat.valueOf() === 0"
-                    class="flex w-72 flex-col items-center gap-4 rounded-xl bg-[#464A4D] p-6 text-surface-bright">
+            <div
+                v-if="openChat === 0"
+                class="flex h-full w-full items-center justify-center rounded-xl bg-surface-bright p-4"
+                ref="el">
+                <div class="flex w-72 flex-col gap-4 rounded-xl bg-[#464A4D] p-6 text-surface-bright">
                     <p class="text-headline-small">Tritt mit Läden in Kontakt</p>
                     <p class="text-body-medium">
                         Du hast noch keine Chat ausgewählt. Wähle rechts einen Chat aus, oder kontaktiere einen Laden über seine
                         Seite.
                     </p>
                 </div>
+            </div>
 
-                <div v-else>
-                    <div v-for="chat in chats">
-                        <div v-if="chat.chatWithID === openChat.valueOf()" v-for="message in chat.messages" class="py-4">
-                            <div v-if="openChat.valueOf() === message.from" class="flex w-full justify-start text-primary">
-                                <div class="flex flex-col items-start gap-1">
-                                    <div class="text-body-small text-neutral-70">{{ message.timestamp }}</div>
-                                    <div class="max-w-[512px] rounded-t-xl rounded-br-xl bg-primary-70 p-2 text-body-small">
-                                        {{ message.message }}
-                                    </div>
+            <div v-else class="flex h-full w-full flex-col-reverse overflow-auto rounded-xl bg-surface-bright p-4" ref="el">
+                <div v-for="chat in chats">
+                    <div v-if="chat.chatWithID === openChat" v-for="message in chat.messages" class="py-4">
+                        <div v-if="openChat === message.from" class="flex w-full justify-start text-primary">
+                            <div class="flex flex-col items-start gap-1">
+                                <div class="text-body-small text-neutral-70">{{ message.timestamp }}</div>
+                                <div class="max-w-[512px] rounded-t-xl rounded-br-xl bg-primary-70 p-2 text-body-small">
+                                    {{ message.message }}
                                 </div>
                             </div>
-                            <div v-else class="flex w-full justify-end text-primary">
-                                <div class="flex flex-col items-end gap-1">
-                                    <div class="text-body-small text-neutral-70">{{ message.timestamp }}</div>
-                                    <div class="max-w-[512px] rounded-t-xl rounded-bl-xl bg-secondary p-2 text-body-small">
-                                        {{ message.message }}
-                                    </div>
+                        </div>
+                        <div v-else class="flex w-full justify-end text-primary">
+                            <div class="flex flex-col items-end gap-1">
+                                <div class="text-body-small text-neutral-70">{{ message.timestamp }}</div>
+                                <div class="max-w-[512px] rounded-t-xl rounded-bl-xl bg-secondary p-2 text-body-small">
+                                    {{ message.message }}
                                 </div>
                             </div>
                         </div>
@@ -69,7 +71,8 @@
                 </div>
             </div>
         </div>
-        <div class="hidden h-full w-[600px] flex-col rounded-l-xl bg-surface-bright p-4 lg:flex">
+        <!-- Panel rechts -->
+        <div class="hidden h-full w-full max-w-md flex-col rounded-l-xl bg-surface-bright p-4 lg:flex">
             <div class="flex items-end gap-4 py-4">
                 <div class="flex w-3/5 flex-col items-center gap-2">
                     <img class="w-full rounded-lg" src="~/assets/dummyImages/shoppy.png" />
@@ -90,17 +93,19 @@
                     </Button>
                 </div>
             </div>
-            <TabView>
-                <TabPanel header="Alle" :pt="{ content: 'overflow-auto h-full' }">
+            <TabView class="flex h-96 grow flex-col" :pt="{ panelContainer: 'h-full overflow-auto' }">
+                <TabPanel header="Alle" :pt="{ content: '' }">
                     <div class="flex w-full flex-col rounded-xl bg-user-surface-container p-2">
                         <div
                             v-for="chat in chats"
-                            class="flex w-full items-center justify-start gap-4 rounded-xl p-2 hover:bg-user-surface-dim"
+                            class="flex w-full cursor-pointer items-center justify-start gap-4 rounded-xl p-2 hover:bg-user-surface-dim"
                             @click="selectChat(chat)">
-                            <img class="h-autyo w-14 max-w-none" src="~/assets/dummyImages/UserIcon.png" />
-                            <div class="flex w-full flex-col gap-1 text-primary">
+                            <div>
+                                <img class="w-14 max-w-none" src="~/assets/dummyImages/UserIcon.png" />
+                            </div>
+                            <div class="space-y-1 truncate text-primary">
                                 <div class="text-label-medium font-bold">{{ chat.chatWith }}</div>
-                                <div class="w-full max-w-md truncate text-body-small">
+                                <div class="truncate text-body-small">
                                     {{ chat.messages.at(chat.messages.length - 1)?.message }}
                                 </div>
                             </div>
