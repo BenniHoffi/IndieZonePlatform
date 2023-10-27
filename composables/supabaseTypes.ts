@@ -232,6 +232,7 @@ interface Database {
                     created_at: string | null
                     description: string | null
                     id: string
+                    location: unknown
                     max_products: number | null
                     name: string
                     opening_hours: Json | null
@@ -253,6 +254,7 @@ interface Database {
                     created_at?: string | null
                     description?: string | null
                     id?: string
+                    location: unknown
                     max_products?: number | null
                     name: string
                     opening_hours?: Json | null
@@ -274,6 +276,7 @@ interface Database {
                     created_at?: string | null
                     description?: string | null
                     id?: string
+                    location?: unknown
                     max_products?: number | null
                     name?: string
                     opening_hours?: Json | null

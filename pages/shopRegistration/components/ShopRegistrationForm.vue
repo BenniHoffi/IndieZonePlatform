@@ -9,7 +9,15 @@
                     <FormKitSchema :schema="schemaOwner" />
                 </FormKit>
                 <FormKit type="step" name="address" previous-label="Zurück">
-                    <FormKitSchema :schema="schemaAddress" />
+                    <h2 class="mb-5 text-headline-small">Und wo können ihn deine Kunden finden?</h2>
+                    <div class="mb-4 flex gap-2 rounded-lg bg-user-surface-container-low p-2 text-label-medium">
+                        <Icon name="material-symbols:info-outline" size="20px" />
+                        <div class="w-full">
+                            Gib bei der Adressuche deine Adresse ein, die anderen Felder werden automatisch ausgefüllt. Du kannst
+                            den Marker auf der Karte noch verschieben, um die exakte Position deines Ladens festzulegen.
+                        </div>
+                    </div>
+                    <MapboxAddressAutofill v-model="location" />
                 </FormKit>
                 <FormKit type="step" name="category" previous-label="Zurück">
                     <FormKitSchema :schema="schemaCategory" />
@@ -122,11 +130,14 @@
     </DevOnly>
 </template>
 <script setup lang="ts">
+    import mapboxgl from "mapbox-gl"
     import { useToast } from "primevue/usetoast"
 
     const toast = useToast()
     const user = useSupabaseUser()
     const supabase = useSupabaseClient<Database>()
+
+    const location = ref<[number, number]>()
     const shopImg = ref<File>()
     const pdf = ref<File>()
     const openingHours = ref<OpeningHoursDay[][]>([
@@ -178,6 +189,7 @@
                 zip_code: submitData.multistep.address.zip_code,
                 city: submitData.multistep.address.city,
                 country: "Deutschland",
+                location: `POINT(${location.value![0]} ${location.value![1]})`,
                 opening_hours: openingHours.value,
             })
             .select("id")
@@ -253,7 +265,7 @@
             $formkit: "primeInputText",
             name: "shopname",
             label: "Ladenname",
-            validation: "required|length:6",
+            validation: "(200)required|(200)length:6",
             placeholder: "Ladenname",
             class: "w-full",
             labelClass: "hidden",
@@ -273,46 +285,13 @@
             name: "shopowner_name",
             value: user.value?.user_metadata.name,
             label: "Ladenbesitzer",
-            validation: "required|length:6",
+            validation: "(200)required|(200)length:6",
             placeholder: "Name des Ladenbesitzers",
             class: "w-full",
             labelClass: "hidden",
         },
     ]
 
-    const schemaAddress = [
-        {
-            $el: "h2",
-            attrs: {
-                class: "text-headline-small mb-3",
-            },
-            children: "Und wo können ihn deine Kunden finden?",
-        },
-        {
-            $formkit: "primeInputText",
-            name: "street_address",
-            label: "Straße und Hausnummer",
-            validation: "required",
-            placeholder: "Straße und Hausnummer",
-            class: "w-full",
-        },
-        {
-            $formkit: "primeInputText",
-            name: "zip_code",
-            label: "Postleitzahl",
-            validation: "required",
-            placeholder: "Postleitzahl",
-            class: "w-full",
-        },
-        {
-            $formkit: "primeInputText",
-            name: "city",
-            label: "Ort",
-            validation: "required",
-            placeholder: "Ort",
-            class: "w-full",
-        },
-    ]
     const schemaCategory = [
         {
             $el: "h2",
@@ -325,7 +304,7 @@
             $formkit: "primeInputText",
             name: "category",
             label: "Kategorie",
-            validation: "required",
+            validation: "(200)required",
             placeholder: "zB. Buchladen, Schuhgeschäft...",
             class: "w-full",
             labelClass: "hidden",
@@ -343,7 +322,7 @@
             $formkit: "primeInputText",
             name: "slogan",
             label: "Kurzbeschreibung",
-            validation: "required",
+            validation: "(200)required",
             placeholder: "Kurzbeschreibung",
             class: "w-full",
             labelClass: "hidden",
@@ -362,7 +341,7 @@
             $formkit: "primeInputText",
             name: "telephone",
             label: "Telefonnummer",
-            validation: "required",
+            validation: "(200)required",
             placeholder: "Telefonnummer",
             class: "w-full",
             labelClass: "hidden",
