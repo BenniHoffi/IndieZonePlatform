@@ -15,7 +15,7 @@
 
     const turnstileToken = ref()
 
-    async function signUp(signupData: { email: string; password: string; name: string; username: string; bday: string }) {
+    async function signUp(signupData: { email: string; password: string; name: string; username: string; bday: Date }) {
         const { error } = await supabase.auth.signUp({
             email: signupData.email,
             password: signupData.password,
@@ -23,7 +23,7 @@
                 data: {
                     name: signupData.name,
                     username: signupData.username,
-                    bday: signupData.bday,
+                    bday: signupData.bday.toISOString().split("T")[0],
                 },
                 captchaToken: turnstileToken.value,
             },
@@ -66,6 +66,7 @@
             label: "Geburtstag",
             validation: "required",
             dateFormat: "dd.mm.yy",
+            view: "year",
             showIcon: true,
             maxDate: dateBefore,
             touchUI: true,

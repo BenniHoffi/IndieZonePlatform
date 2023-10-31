@@ -1,6 +1,6 @@
 <template>
-    <div class="flex w-full max-w-screen-xl flex-col items-center gap-2 p-4">
-        <h1 class="text-3xl font-bold">Kategorieneditor</h1>
+    <div class="flex w-full max-w-screen-2xl flex-col items-center gap-6">
+        <h1 class="text-display-medium font-bold">Category Editor</h1>
         <Tree v-model:expanded-keys="expandedKeys" :value="nodes" class="w-full">
             <template #default="{ node }">
                 <div class="flex items-center gap-2">
@@ -68,6 +68,11 @@
         middleware: ["admin"],
     })
 
+    const test: OpeningHoursDay = {
+        from: "08:00",
+        to: "12:00",
+    }
+
     const client = useSupabaseClient<Database>()
     const toast = useToast()
     const confirm = useConfirm()
@@ -95,7 +100,9 @@
                         id: category.id,
                         path: category.path,
                         name: { ...category.name },
-                        attributes: attributes.value?.filter((attribute) => category.attributes?.includes(attribute.id)),
+                        attributes: attributes.value?.filter(
+                            (attribute: CategoryAttribute) => category.attributes?.includes(attribute.id)
+                        ),
                     },
                 }
                 expandedKeys.value[category.id] = true
@@ -253,7 +260,8 @@
 
     function cancelEditAttributes(node: TreeNode) {
         node.data.attributes = attributes.value?.filter(
-            (attribute) => categories.value?.find((category) => category.id === node.data.id)?.attributes?.includes(attribute.id)
+            (attribute: CategoryAttribute) =>
+                categories.value?.find((category) => category.id === node.data.id)?.attributes?.includes(attribute.id)
         )
         node.type = "default"
     }

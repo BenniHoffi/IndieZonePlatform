@@ -12,10 +12,20 @@ export default defineNuxtConfig({
         "@nuxt/image",
         "@vite-pwa/nuxt",
         "nuxt-icon",
+        "nuxt-mapbox",
     ],
+    vue: {
+        defineModel: true,
+        propsDestructure: true,
+    },
     components: ["~/components", ...scanComponentsDir(path.join(__dirname, "pages"))],
     imports: {
         dirs: ["pages/**/composables"],
+    },
+    runtimeConfig: {
+        public: {
+            mapboxApiToken: "",
+        },
     },
     build: {
         transpile: ["primevue"],
@@ -32,10 +42,6 @@ export default defineNuxtConfig({
             title: "IndieZone",
             link: [{ rel: "icon", type: "image/x-icon", href: "/images/favicon.ico" }],
         },
-    },
-    vue: {
-        defineModel: true,
-        propsDestructure: true,
     },
     pwa: {
         manifest: {
@@ -81,6 +87,9 @@ export default defineNuxtConfig({
             type: "module",
         },
     },
+    mapbox: {
+        accessToken: process.env.NUXT_PUBLIC_MAPBOX_API_TOKEN,
+    },
     primevue: {
         components: {
             include: [
@@ -111,8 +120,13 @@ export default defineNuxtConfig({
                 "TabView",
                 "TabPanel",
                 "Tree",
+                "Chips",
                 "Chip",
                 "Column",
+                "Card",
+                "Dialog",
+                "ProgressSpinner",
+                "AutoComplete",
             ],
         },
         useFormkit: true,

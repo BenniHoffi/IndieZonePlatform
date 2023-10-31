@@ -4,7 +4,7 @@ import { de } from "@formkit/i18n"
 import { generateClasses } from "@formkit/themes"
 import { createMultiStepPlugin } from "@formkit/addons"
 import myTailwindTheme from "./formkit-tailwind-theme"
-import "@formkit/addons/css/multistep.css"
+import "@formkit/addons/css/multistep"
 
 const config: DefaultConfigOptions = {
     plugins: [createMultiStepPlugin()],

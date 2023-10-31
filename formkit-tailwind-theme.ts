@@ -36,7 +36,7 @@ export default {
         wrapper: "flex items-center mb-1",
     },
     "family:button": {
-        input: "$reset bg-primary text-white rounded-md px-6 py-3",
+        input: "$reset bg-primary text-white rounded-md px-5 py-2",
         wrapper: "my-4",
         prefixIcon: "$reset block w-4 -ml-2 mr-2 stretch",
         suffixIcon: "$reset block w-4 ml-2 stretch",
