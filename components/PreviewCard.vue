@@ -1,7 +1,7 @@
 <template>
     <NuxtLink :to="price ? 'product-' + id : 'shop-' + id">
         <div class="relative h-44 snap-start overflow-y-clip rounded-lg bg-user-surface-container-low">
-            <img class="h-4/5 max-w-none" :src="imageUrl" />
+            <NuxtImg class="h-4/5 max-w-none" :src="imageUrl" />
             <div class="flex h-1/5 items-center justify-between rounded-b-lg px-4 text-primary">
                 <div>{{ name }}</div>
                 <div v-if="price">{{ price }} €</div>

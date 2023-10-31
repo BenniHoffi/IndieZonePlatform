@@ -14,7 +14,7 @@
                 <div>
                     <div class="flex w-full flex-col gap-3">
                         <NuxtLink
-                            to="/shop"
+                            to="/myshop"
                             :class="minimized ? 'justify-center' : ''"
                             activeClass="bg-secondary text-black hover:bg-secondary"
                             class="flex h-9 w-full items-center gap-3 rounded-lg px-3 py-1 text-3xl hover:bg-primary-hover">
@@ -32,7 +32,7 @@
                     <div class="mx-3 my-3 h-[1px] w-auto bg-outline-variant" />
                     <div class="flex flex-col gap-3">
                         <NuxtLink
-                            to="/shop/products"
+                            to="/myshop/products"
                             :class="minimized ? 'justify-center' : ''"
                             activeClass="bg-secondary text-black hover:bg-secondary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
@@ -41,7 +41,7 @@
                             <div v-if="!minimized">Artikelübersicht</div>
                         </NuxtLink>
                         <NuxtLink
-                            to="/shop/stats"
+                            to="/myshop/stats"
                             :class="minimized ? 'justify-center' : ''"
                             activeClass="bg-secondary text-black hover:bg-secondary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
@@ -50,7 +50,7 @@
                             <div v-if="!minimized">Statistik</div>
                         </NuxtLink>
                         <NuxtLink
-                            to="/shop/notifications"
+                            to="/myshop/notifications"
                             :class="minimized ? 'justify-center' : ''"
                             activeClass="bg-secondary text-black hover:bg-secondary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
@@ -59,7 +59,7 @@
                             <div v-if="!minimized">Mitteilungen</div>
                         </NuxtLink>
                         <NuxtLink
-                            to="/shop/messages"
+                            to="/myshop/messages"
                             :class="minimized ? 'justify-center' : ''"
                             activeClass="bg-secondary text-black hover:bg-secondary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
@@ -68,7 +68,7 @@
                             <div v-if="!minimized">Kundenchats</div>
                         </NuxtLink>
                         <NuxtLink
-                            to="/shop/shopview"
+                            to="/myshop/shopview"
                             :class="minimized ? 'justify-center' : ''"
                             activeClass="bg-secondary text-black hover:bg-secondary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
@@ -77,7 +77,7 @@
                             <div v-if="!minimized">Shopansicht</div>
                         </NuxtLink>
                         <NuxtLink
-                            to="/shop/help"
+                            to="/myshop/help"
                             :class="minimized ? 'justify-center' : ''"
                             activeClass="bg-secondary text-black hover:bg-secondary"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
@@ -97,7 +97,7 @@
                         <div v-if="!minimized">Mein Account</div>
                     </NuxtLink>
                     <NuxtLink
-                        to="/shop/settings"
+                        to="/myshop/settings"
                         :class="minimized ? 'justify-center' : ''"
                         activeClass="bg-secondary text-black hover:bg-secondary"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"

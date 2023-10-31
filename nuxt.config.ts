@@ -2,17 +2,16 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: [
-        "@nuxtjs/supabase",
-        "@nuxtjs/tailwindcss",
-        "@nuxtjs/google-fonts",
-        "@formkit/nuxt",
-        "@sfxcode/nuxt-primevue",
-        "@vueuse/nuxt",
-        "@nuxtjs/turnstile",
-        "@nuxt/image",
-        "@vite-pwa/nuxt",
-        "nuxt-icon",
-        "nuxt-mapbox",
+      "@nuxtjs/supabase",
+      "@nuxtjs/tailwindcss",
+      "@nuxtjs/google-fonts",
+      "@sfxcode/nuxt-primevue",
+      "@vueuse/nuxt",
+      "@nuxtjs/turnstile",
+      "@nuxt/image",
+      "@vite-pwa/nuxt",
+      "nuxt-icon",
+      "nuxt-mapbox"
     ],
     vue: {
         defineModel: true,
@@ -188,7 +187,7 @@ export default defineNuxtConfig({
 
 import path from "path"
 import fs from "fs"
-import { NuxtPage } from "nuxt/schema"
+import type { NuxtPage } from "nuxt/schema"
 
 function scanComponentsDir(dir: string): string[] {
     const components: string[] = []
