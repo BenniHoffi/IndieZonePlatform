@@ -8,11 +8,11 @@
         <template #header="{ chooseCallback, clearCallback, files }">
             <div v-if="img" class="flex w-full flex-col items-center justify-center gap-2">
                 <i class="pi pi-times cursor-pointer self-end" style="font-size: 1rem" @click="emit('clear')" />
-                <img :src="img.objectURL" class="border border-primary" />
+                <NuxtImg :src="img.objectURL" class="border border-primary" />
             </div>
             <div v-else-if="files.length > 0" class="flex w-full flex-col items-center justify-center gap-2">
                 <i class="pi pi-times cursor-pointer self-end" style="font-size: 1rem" @click="clearCallback()" />
-                <img :src="files[0].objectURL" class="border border-primary" />
+                <NuxtImg :src="files[0].objectURL" class="border border-primary" />
             </div>
             <div v-else class="flex w-full cursor-pointer flex-col items-center justify-center gap-2" @click="chooseCallback()">
                 <i class="pi pi-image" style="font-size: 5rem"></i>

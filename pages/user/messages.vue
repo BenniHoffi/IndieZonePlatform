@@ -75,7 +75,7 @@
         <div class="hidden h-full w-full max-w-md flex-col rounded-l-xl bg-surface-bright p-4 lg:flex">
             <div class="flex items-end gap-4 py-4">
                 <div class="flex w-3/5 flex-col items-center gap-2">
-                    <img class="w-full rounded-lg" src="~/assets/dummyImages/shoppy.png" />
+                    <NuxtImg class="w-full rounded-lg" src="~/assets/dummyImages/shoppy.png" />
                     <p class="text-label-medium font-extrabold text-primary">Bücherwurm</p>
                 </div>
                 <div class="flex w-2/5 flex-col items-end gap-2">
@@ -101,7 +101,7 @@
                             class="flex w-full cursor-pointer items-center justify-start gap-4 rounded-xl p-2 hover:bg-user-surface-dim"
                             @click="selectChat(chat)">
                             <div>
-                                <img class="w-14 max-w-none" src="~/assets/dummyImages/UserIcon.png" />
+                                <NuxtImg class="w-14 max-w-none" src="~/assets/dummyImages/UserIcon.png" />
                             </div>
                             <div class="space-y-1 truncate text-primary">
                                 <div class="text-label-medium font-bold">{{ chat.chatWith }}</div>
@@ -120,7 +120,7 @@
                                     v-if="!message.read"
                                     class="flex items-center justify-start gap-4 rounded-xl p-2 hover:bg-user-surface-dim"
                                     @click="y = 0">
-                                    <img class="h-auto max-w-xs" src="~/assets/dummyImages/UserIcon.png" />
+                                    <NuxtImg class="h-auto max-w-xs" src="~/assets/dummyImages/UserIcon.png" />
                                     <div class="flex flex-col gap-1 text-primary">
                                         <p class="text-label-medium font-bold">{{ chat.chatWith }}</p>
                                         <p class="truncate text-body-small">

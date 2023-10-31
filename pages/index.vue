@@ -30,8 +30,6 @@
 </template>
 
 <script lang="ts" setup>
-    import MapboxAddressAutofill from "./shopRegistration/components/MapboxAddressAutofill.vue"
-
     definePageMeta({
         title: "Home",
     })

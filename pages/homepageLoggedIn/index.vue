@@ -8,25 +8,25 @@
             <div class="flex w-full max-w-7xl flex-auto justify-around gap-4 px-4">
                 <NuxtLink to=".">
                     <div class="flex flex-col items-center gap-4">
-                        <img class="max-h-44" src="~/assets/dummyImages/circ1.png" />
+                        <NuxtImg class="max-h-44" src="~/assets/dummyImages/circ1.png" />
                         <p class="text-title-large">Einkaufen</p>
                     </div>
                 </NuxtLink>
                 <NuxtLink to=".">
                     <div class="flex flex-col items-center gap-4">
-                        <img class="max-h-44" src="~/assets/dummyImages/circ2.png" />
+                        <NuxtImg class="max-h-44" src="~/assets/dummyImages/circ2.png" />
                         <p class="text-ellipsis text-title-large">Veranstaltungen</p>
                     </div>
                 </NuxtLink>
                 <NuxtLink to=".">
                     <div class="flex flex-col items-center gap-4">
-                        <img class="max-h-44" src="~/assets/dummyImages/circ3.png" />
+                        <NuxtImg class="max-h-44" src="~/assets/dummyImages/circ3.png" />
                         <p class="text-title-large">Vereine</p>
                     </div>
                 </NuxtLink>
                 <NuxtLink to=".">
                     <div class="flex flex-col items-center gap-4">
-                        <img class="max-h-44" src="~/assets/dummyImages/circ4.png" />
+                        <NuxtImg class="max-h-44" src="~/assets/dummyImages/circ4.png" />
                         <p class="text-title-large">deine Stadt</p>
                     </div>
                 </NuxtLink>

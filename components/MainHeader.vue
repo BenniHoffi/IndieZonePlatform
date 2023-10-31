@@ -7,18 +7,18 @@
                         <NuxtLink to="/admin">Admin Dashboard</NuxtLink>
                     </li>
                     <li v-if="user?.app_metadata.shopowner">
-                        <NuxtLink to="/shop">Mein Shop</NuxtLink>
+                        <NuxtLink to="/myshop">Mein Shop</NuxtLink>
                     </li>
                     <li v-else>
-                        <NuxtLink to="/becomeShopowner">IndieZone Händler werden</NuxtLink>
+                        <NuxtLink to="/shopownerRegistration">IndieZone Händler werden</NuxtLink>
                     </li>
                 </ul>
             </Sidebar>
             <div class="fixed left-0 top-0 z-[999] w-full">
                 <div class="flex w-full items-center justify-between bg-white p-4 px-6 pt-6">
                     <NuxtLink to="/" class="flex items-center gap-4">
-                        <img src="/images/indiezoneLogo.png" alt="IndieZone Logo" class="h-14" />
-                        <img src="/images/indiezoneBanner.png" alt="IndieZone Banner" class="h-5" />
+                        <NuxtImg src="/images/indiezoneLogo.png" alt="IndieZone Logo" class="h-14" />
+                        <NuxtImg src="/images/indiezoneBanner.png" alt="IndieZone Banner" class="h-5" />
                     </NuxtLink>
                     <div class="flex items-center gap-4">
                         <NuxtLink to="/location">
@@ -56,7 +56,7 @@
             </div>
             <div class="flex w-[90%] justify-between">
                 <NuxtLink class="z-20" to="/">
-                    <img src="/images/IndieZoneDesktopLogo.png" alt="IndieZoneLogo" class="h-56" />
+                    <NuxtImg src="/images/IndieZoneDesktopLogo.png" alt="IndieZoneLogo" class="h-56" />
                 </NuxtLink>
                 <div class="flex w-60 items-center justify-between gap-4 text-label-medium">
                     <NuxtLink to="/location">

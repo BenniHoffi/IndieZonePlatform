@@ -33,7 +33,7 @@
                 <NuxtLink to="/" class="flex items-center gap-2 rounded-lg bg-user-surface-container-high p-2">
                     <Icon name="material-symbols:arrow-back" />
                     zurück zu IndieZone
-                    <img src="/images/indiezoneLogo.png" class="h-6" />
+                    <NuxtImg src="/images/indiezoneLogo.png" class="h-6" />
                 </NuxtLink>
             </div>
         </div>
