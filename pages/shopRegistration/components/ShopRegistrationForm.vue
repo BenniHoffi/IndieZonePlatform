@@ -13,7 +13,7 @@
                     <div class="mb-4 flex gap-2 rounded-lg bg-user-surface-container-low p-2 text-label-medium">
                         <Icon name="material-symbols:info-outline" size="20px" />
                         <div class="w-full">
-                            Gib bei der Adressuche deine Adresse ein, die anderen Felder werden automatisch ausgefüllt. Du kannst
+                            Gib bei der Adresssuche deine Adresse ein, die anderen Felder werden automatisch ausgefüllt. Du kannst
                             den Marker auf der Karte noch verschieben, um die exakte Position deines Ladens festzulegen.
                         </div>
                     </div>
@@ -130,7 +130,6 @@
     </DevOnly>
 </template>
 <script setup lang="ts">
-    import mapboxgl from "mapbox-gl"
     import { useToast } from "primevue/usetoast"
 
     const toast = useToast()
@@ -348,3 +347,9 @@
         },
     ]
 </script>
+<style>
+    :root {
+        --multistep-color-success: #aad92b;
+        --multistep-color-danger: #dc362e;
+    }
+</style>

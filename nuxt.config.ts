@@ -2,16 +2,17 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: [
-      "@nuxtjs/supabase",
-      "@nuxtjs/tailwindcss",
-      "@nuxtjs/google-fonts",
-      "@sfxcode/nuxt-primevue",
-      "@vueuse/nuxt",
-      "@nuxtjs/turnstile",
-      "@nuxt/image",
-      "@vite-pwa/nuxt",
-      "nuxt-icon",
-      "nuxt-mapbox"
+        "@nuxtjs/supabase",
+        "@nuxtjs/tailwindcss",
+        "@nuxtjs/google-fonts",
+        "@sfxcode/nuxt-primevue",
+        "@vueuse/nuxt",
+        "@nuxtjs/turnstile",
+        "@nuxt/image",
+        "@vite-pwa/nuxt",
+        "nuxt-icon",
+        "nuxt-mapbox",
+        "@formkit/nuxt",
     ],
     vue: {
         defineModel: true,

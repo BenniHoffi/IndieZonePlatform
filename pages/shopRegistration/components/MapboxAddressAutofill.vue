@@ -66,7 +66,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { AutoCompleteCompleteEvent, AutoCompleteItemSelectEvent } from "primevue/autocomplete"
+    import type { AutoCompleteCompleteEvent, AutoCompleteItemSelectEvent } from "primevue/autocomplete"
     import { AddressAutofillCore, SearchSession } from "@mapbox/search-js-core"
     import mapboxgl from "mapbox-gl"
 

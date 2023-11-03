@@ -14,7 +14,7 @@
 
     const turnstileToken = ref()
 
-    async function signIn(loginData: any) {
+    async function signIn(loginData: { email: string; password: string }) {
         const { error } = await supabase.auth.signInWithPassword({
             email: loginData.email,
             password: loginData.password,

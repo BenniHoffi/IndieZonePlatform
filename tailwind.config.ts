@@ -59,7 +59,7 @@ export default <Partial<Config>>{
                 "secondary-80": "#BDE550",
                 "secondary-90": "#CDE58A",
                 error: "#B3261E",
-                "error-10": "#B3261E",
+                "error-10": "#410E0B",
                 "error-20": "#601410",
                 "error-30": "#601410",
                 "error-40": "#B3261E",

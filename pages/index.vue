@@ -10,8 +10,6 @@
             <br />
             <NuxtLink to="/shopRegistration">Shop-Registrierung Test</NuxtLink>
             <br />
-            <NuxtLink to="/homepageLoggedIn">Homepage logged in Test</NuxtLink>
-            <br />
         </div>
         <!-- <div class="mx-auto h-[500px] w-full lg:w-2/3">
             <ClientOnly>
@@ -22,6 +20,7 @@
                     ]" />
             </ClientOnly>
         </div> -->
+        <HomeTopSection />
 
         <ShowcaseSection title="Neu in deiner IndieZone" :cards="cards" bgColor="bg-secondary" />
         <ShowcaseSection title="Eure Lieblinge" :cards="cards" />
