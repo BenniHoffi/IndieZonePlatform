@@ -1,7 +1,7 @@
 <template>
     <header class="w-full">
         <div class="pb-44 lg:hidden">
-            <Sidebar v-model:visible="sidebarVisibility" class="flex flex-col gap-4 p-4">
+            <Sidebar v-model:visible="sidebarVisibility" class="flex flex-col gap-4 p-4" position="right">
                 <ul>
                     <li v-if="user?.app_metadata.claims_admin">
                         <NuxtLink to="/admin">Admin Dashboard</NuxtLink>
@@ -15,29 +15,20 @@
                 </ul>
             </Sidebar>
             <div class="fixed left-0 top-0 z-[999] w-full">
-                <div class="flex w-full items-center justify-between bg-white p-4 px-6 pt-6">
-                    <NuxtLink to="/" class="flex items-center gap-4">
-                        <NuxtImg src="/images/indiezoneLogo.png" alt="IndieZone Logo" class="h-14" />
-                        <NuxtImg src="/images/indiezoneBanner.png" alt="IndieZone Banner" class="h-5" />
-                    </NuxtLink>
-                    <div class="flex items-center gap-4">
-                        <NuxtLink to="/location">
-                            <Icon name="material-symbols:location-on-outline" />
-                        </NuxtLink>
-                        <NuxtLink :to="user ? '/user/favorites' : '/'">
-                            <Icon name="material-symbols:favorite-outline" />
-                        </NuxtLink>
-                        <NuxtLink :to="user ? '/user' : '/login'">
-                            <Icon name="material-symbols:person-outline" />
-                        </NuxtLink>
-                    </div>
-                </div>
-                <div class="flex h-20 w-full items-center gap-4 bg-secondary p-4 lg:pr-8">
+                <div class="flex h-16 w-full items-center gap-1 bg-secondary p-2 lg:pr-8">
+                    <button class="aspect-square h-10" @click="router.back()">
+                        <Icon name="material-symbols:arrow-back" />
+                    </button>
+                    <MainSearchbar />
                     <button class="aspect-square h-10" @click="sidebarVisibility = true">
                         <Icon name="material-symbols:menu" />
                     </button>
-                    <MainSearchbar />
                 </div>
+            </div>
+            <div class="fixed bottom-0 left-0 z-[999] flex h-14 w-full items-center justify-around bg-secondary">
+                <NuxtLink v-for="link in navigation" :key="link.to" :to="link.to">
+                    <Icon :name="route.path === link.to ? link.icon : link.icon + '-outline'" />
+                </NuxtLink>
             </div>
         </div>
         <div class="relative hidden w-full flex-col items-center lg:flex">
@@ -87,5 +78,32 @@
 <script lang="ts" setup>
     const user = useSupabaseUser()
 
+    const route = useRoute()
+    const router = useRouter()
+
     const sidebarVisibility = ref(false)
+
+    const navigation = ref([
+        {
+            to: "/",
+            icon: "material-symbols:home",
+        },
+        {
+            to: "/user/favorites",
+            icon: "material-symbols:favorite",
+        },
+        {
+            to: "/location",
+            icon: "material-symbols:location-on",
+        },
+        {
+            to: "/user",
+            icon: "material-symbols:person",
+        },
+        {
+            to: "/myshop",
+            icon: "material-symbols:storefront",
+        },
+    ])
+    // TODO: konditionales Rendering der storefront!
 </script>

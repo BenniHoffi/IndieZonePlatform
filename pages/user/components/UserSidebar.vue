@@ -8,7 +8,7 @@
                 v-else
                 :class="minimized ? 'w-[80px] px-3' : 'w-72 px-5'"
                 class="fixed left-0 top-0 flex h-screen flex-col justify-around overflow-hidden whitespace-nowrap rounded-r-2xl bg-user-surface-container py-10 text-primary transition-all">
-                <div class="absolute right-4 top-4 lg:hidden" @click="open = false">
+                <div class="absolute right-4 top-4 cursor-pointer lg:hidden" @click="open = false">
                     <Icon name="material-symbols:close" />
                 </div>
                 <div>
@@ -78,7 +78,7 @@
                 </div>
                 <div :class="minimized ? '' : 'w-full'" class="flex flex-col gap-3">
                     <NuxtLink
-                        to="/shop/account"
+                        to="/myshop/account"
                         :class="minimized ? 'justify-center' : ''"
                         active-class="bg-primary text-user-surface-container hover:bg-primary"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-user-surface-dim"
@@ -87,7 +87,7 @@
                         <div v-if="!minimized">Mein Account</div>
                     </NuxtLink>
                     <NuxtLink
-                        to="/shop/settings"
+                        to="/myshop/settings"
                         :class="minimized ? 'justify-center' : ''"
                         active-class="bg-primary text-user-surface-container hover:bg-primary"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-user-surface-dim"
@@ -107,6 +107,10 @@
 </template>
 
 <script setup lang="ts">
-    const open = ref(true)
+    import { breakpointsTailwind } from "@vueuse/core"
+    const breakpoints = useBreakpoints(breakpointsTailwind)
+
+    const mdAndLarger = breakpoints.greaterOrEqual("md")
+    const open = ref(mdAndLarger)
     const minimized = useState<boolean>("usersidebarMinimized", () => false)
 </script>

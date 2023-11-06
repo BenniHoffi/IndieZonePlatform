@@ -33,3 +33,22 @@ interface OpeningHoursDay {
     from: string
     to: string
 }
+
+interface Chat {
+    id: string
+    user_id: string
+    shop_id: string
+    last_message: Message
+    username: string
+    shopname: string
+}
+
+interface Message {
+    id: string
+    from: string
+    chat_id: string
+    message: string
+    shop_sender_name: string
+    created_at: Date
+    read: boolean
+}

@@ -2,7 +2,7 @@
     <section v-if="!location" class="mx-auto flex w-full flex-col items-center justify-center gap-10">
         <h1 class="text-display-medium font-bold">Online stöbern, lokal kaufen.</h1>
         <div class="relative flex w-full max-w-md items-center justify-center">
-            <NuxtImg class="w-full" src="/images/OutlineGermany.svg" />
+            <img class="w-full" src="/images/OutlineGermany.svg" />
             <Card class="top-1/5 absolute z-10 w-full max-w-md rounded-2xl bg-surface-container-high">
                 <template #title>
                     <h3>Wo willst du stöbern?</h3>
