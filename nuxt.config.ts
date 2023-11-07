@@ -5,17 +5,27 @@ export default defineNuxtConfig({
         "@nuxtjs/supabase",
         "@nuxtjs/tailwindcss",
         "@nuxtjs/google-fonts",
-        "@formkit/nuxt",
         "@sfxcode/nuxt-primevue",
         "@vueuse/nuxt",
         "@nuxtjs/turnstile",
         "@nuxt/image",
         "@vite-pwa/nuxt",
         "nuxt-icon",
+        "nuxt-mapbox",
+        "@formkit/nuxt",
     ],
+    vue: {
+        defineModel: true,
+        propsDestructure: true,
+    },
     components: ["~/components", ...scanComponentsDir(path.join(__dirname, "pages"))],
     imports: {
         dirs: ["pages/**/composables"],
+    },
+    runtimeConfig: {
+        public: {
+            mapboxApiToken: "",
+        },
     },
     build: {
         transpile: ["primevue"],
@@ -23,8 +33,9 @@ export default defineNuxtConfig({
     css: [
         "/assets/google-fonts/css/google-fonts.css",
         "/assets/css/primevue-theme.css",
-        "@sfxcode/formkit-primevue/dist/sass/formkit-prime-inputs.scss",
-        "@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss",
+        "primeicons/primeicons.css",
+        // "@sfxcode/formkit-primevue/dist/sass/formkit-prime-inputs.scss",
+        // "@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss",
     ],
     app: {
         head: {
@@ -76,6 +87,9 @@ export default defineNuxtConfig({
             type: "module",
         },
     },
+    mapbox: {
+        accessToken: process.env.NUXT_PUBLIC_MAPBOX_API_TOKEN,
+    },
     primevue: {
         components: {
             include: [
@@ -103,6 +117,16 @@ export default defineNuxtConfig({
                 "ConfirmPopup",
                 "Toast",
                 "Message",
+                "TabView",
+                "TabPanel",
+                "Tree",
+                "Chips",
+                "Chip",
+                "Column",
+                "Card",
+                "Dialog",
+                "ProgressSpinner",
+                "AutoComplete",
             ],
         },
         useFormkit: true,
@@ -164,7 +188,7 @@ export default defineNuxtConfig({
 
 import path from "path"
 import fs from "fs"
-import { NuxtPage } from "nuxt/schema"
+import type { NuxtPage } from "nuxt/schema"
 
 function scanComponentsDir(dir: string): string[] {
     const components: string[] = []

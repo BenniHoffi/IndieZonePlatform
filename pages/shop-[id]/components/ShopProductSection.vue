@@ -1,5 +1,5 @@
 <template>
-    <section class="mx-auto w-full max-w-6xl px-4 py-16">
+    <section class="mx-auto w-full max-w-6xl px-4 py-12">
         <div class="pb-4 text-title-large text-primary">Unsere Produkte</div>
         <MainSearchbar />
         <div class="flex items-center justify-between py-2">
@@ -21,9 +21,9 @@
         </div>
         <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             <div v-for="product in productArray" class="relative h-full rounded-lg bg-user-surface-container-low shadow-lg">
-                <img class="w-full rounded-t-lg" src="~/assets/dummyImages/mediaSmall.png" />
+                <NuxtImg class="w-full rounded-t-lg" src="~/assets/dummyImages/mediaSmall.png" />
                 <!-- TODO: favourite button sollte noch togglen (irgendwann) -->
-                <button text class="absolute right-0 top-0 p-2" @click="">
+                <button class="absolute right-0 top-0 p-2" @click="">
                     <Icon name="material-symbols:favorite-outline" />
                 </button>
                 <div class="rounded-b-lg py-2 pl-4 text-body-small text-primary">
