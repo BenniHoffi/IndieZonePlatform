@@ -18,7 +18,7 @@ WORKDIR /src
 
 # Build
 FROM base as build
-RUN apk-get add --update --no-cache python3 make g++
+RUN apk add --update --no-cache python3 make g++
 
 COPY --link package.json package-lock.json ./
 RUN npm install --production=false
