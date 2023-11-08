@@ -6,15 +6,15 @@
                     <Icon name="material-symbols:arrow-back" />
                 </button>
                 <div class="space-y-2 px-4">
-                    <NuxtImg class="h-auto w-full" src="~/assets/dummyImages/productty.png" />
-                    <NuxtImg class="h-auto w-full" src="~/assets/dummyImages/productty.png" />
-                    <NuxtImg class="h-auto w-full" src="~/assets/dummyImages/productty.png" />
-                    <NuxtImg class="h-auto w-full" src="~/assets/dummyImages/productty.png" />
+                    <NuxtImg class="h-auto w-full" src="dummyImages/productty.png" />
+                    <NuxtImg class="h-auto w-full" src="dummyImages/productty.png" />
+                    <NuxtImg class="h-auto w-full" src="dummyImages/productty.png" />
+                    <NuxtImg class="h-auto w-full" src="dummyImages/productty.png" />
                 </div>
             </div>
             <div class="relative text-white lg:w-4/5">
                 <!-- TODO: URL richtig machen -->
-                <NuxtImg class="w-full" src="~/assets/dummyImages/productty.png" />
+                <NuxtImg class="w-full" src="dummyImages/productty.png" />
                 <button class="absolute left-3 top-3 lg:hidden" @click="router.back()">
                     <Icon name="material-symbols:arrow-back" />
                 </button>
