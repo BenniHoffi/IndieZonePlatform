@@ -1,5 +1,5 @@
 <template>
-    <section v-if="!location" class="mx-auto flex w-full flex-col items-center justify-center gap-10">
+    <div v-if="!location" class="mx-auto flex w-full flex-col items-center justify-center gap-10 p-4">
         <h1 class="text-display-medium font-bold">Online stöbern, lokal kaufen.</h1>
         <div class="relative flex w-full max-w-md items-center justify-center">
             <img class="w-full" src="/images/OutlineGermany.svg" />
@@ -15,7 +15,7 @@
                         <div v-else-if="step === 'address'">
                             <div>Gib hier deine Adresse ein</div>
                             <br />
-                            <AddressSearch @update="" />
+                            <!-- <AddressSearch @update="" /> -->
                         </div>
                     </div>
                 </template>
@@ -48,8 +48,8 @@
                 </template>
             </Card>
         </div>
-    </section>
-    <section v-else>
+    </div>
+    <div v-else>
         <h1 class="py-12 text-center text-display-medium font-bold">The sustainable heart of your city</h1>
 
         <div class="hidden justify-center pb-32 pt-16 lg:flex">
@@ -80,7 +80,7 @@
                 </NuxtLink>
             </div>
         </div>
-    </section>
+    </div>
 </template>
 
 <script lang="ts" setup>

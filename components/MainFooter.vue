@@ -1,5 +1,5 @@
 <template>
-    <footer class="relative flex w-full items-center gap-4 border-t p-4 pb-12">
+    <footer class="relative hidden w-full items-center gap-4 border-t p-4 pb-12 lg:flex">
         <small class="absolute right-3 top-1">&copy; IndieZone 2023</small>
         <NuxtImg src="/images/indiezoneTextLogo.png" alt="IndieZone Logo" class="w-20" />
         <div class="flex flex-col gap-2">

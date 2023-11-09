@@ -1,5 +1,5 @@
 <template>
-    <section class="w-full">
+    <div class="w-full">
         <div class="mx-auto w-full max-w-7xl pb-2 pl-4 pt-4 text-title-large text-primary">{{ title }}</div>
         <div class="w-full" :class="bgColor">
             <div class="mx-auto max-w-7xl pl-4">
@@ -15,16 +15,17 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </template>
 
 <script lang="ts" setup>
-    const props = withDefaults(
-        defineProps<{
-            title?: string
-            cards: any[]
-            bgColor?: string
-        }>(),
-        { title: "Schaufenster", bgColor: "bg-primary" }
-    )
+    const {
+        title = "Schaufenster",
+        cards,
+        bgColor = "bg-primary",
+    } = defineProps<{
+        title?: string
+        cards: any[]
+        bgColor?: string
+    }>()
 </script>

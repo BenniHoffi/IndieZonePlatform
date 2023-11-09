@@ -1,11 +1,8 @@
 <template>
     <div class="relative">
         <Transition>
-            <div v-if="!open" class="absolute rounded-br-xl bg-user-surface-container p-2 text-primary lg:hidden">
-                <Icon name="material-symbols:menu" @click="open = true" />
-            </div>
             <div
-                v-else
+                v-if="open"
                 :class="minimized ? 'w-[80px] px-3' : 'w-72 px-5'"
                 class="fixed left-0 top-0 flex h-screen flex-col justify-around overflow-hidden whitespace-nowrap rounded-r-2xl bg-user-surface-container py-10 text-primary transition-all">
                 <div class="absolute right-4 top-4 cursor-pointer lg:hidden" @click="open = false">
@@ -107,10 +104,6 @@
 </template>
 
 <script setup lang="ts">
-    import { breakpointsTailwind } from "@vueuse/core"
-    const breakpoints = useBreakpoints(breakpointsTailwind)
-
-    const mdAndLarger = breakpoints.greaterOrEqual("md")
-    const open = ref(mdAndLarger)
+    const open = defineModel()
     const minimized = useState<boolean>("usersidebarMinimized", () => false)
 </script>

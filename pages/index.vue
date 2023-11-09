@@ -1,16 +1,18 @@
 <template>
     <div>
-        <div class="mx-auto max-w-md">
-            <h1 class="text-headline-medium">Home</h1>
-            <NuxtLink to="/myshop">My shop</NuxtLink>
-            <br />
-            <NuxtLink to="/shop-123">Shopansicht test</NuxtLink>
-            <br />
-            <NuxtLink to="/product-123">Produktansicht test</NuxtLink>
-            <br />
-            <NuxtLink to="/shopRegistration">Shop-Registrierung Test</NuxtLink>
-            <br />
-        </div>
+        <DevOnly>
+            <div class="mx-auto max-w-md">
+                <h1 class="text-headline-medium">Home</h1>
+                <NuxtLink to="/myshop" class="text-blue-600 underline">My shop</NuxtLink>
+                <br />
+                <NuxtLink to="/shop-123" class="text-blue-600 underline">Shopansicht test</NuxtLink>
+                <br />
+                <NuxtLink to="/product-123" class="text-blue-600 underline">Produktansicht test</NuxtLink>
+                <br />
+                <NuxtLink to="/shopRegistration" class="text-blue-600 underline">Shop-Registrierung Test</NuxtLink>
+                <br />
+            </div>
+        </DevOnly>
         <!-- <div class="mx-auto h-[500px] w-full lg:w-2/3">
             <ClientOnly>
                 <TheMap

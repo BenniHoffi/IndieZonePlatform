@@ -1,12 +1,9 @@
 <template>
     <header class="w-full">
-        <div class="pb-44 lg:hidden">
+        <div class="pb-16 md:hidden">
             <Sidebar v-model:visible="sidebarVisibility" class="flex flex-col gap-4 p-4" position="right">
                 <ul>
-                    <li v-if="user?.app_metadata.claims_admin">
-                        <NuxtLink to="/admin">Admin Dashboard</NuxtLink>
-                    </li>
-                    <li v-if="user?.app_metadata.shopowner">
+                    <li v-if="user?.app_metadata.shops">
                         <NuxtLink to="/myshop">Mein Shop</NuxtLink>
                     </li>
                     <li v-else>
@@ -25,11 +22,7 @@
                     </button>
                 </div>
             </div>
-            <div class="fixed bottom-0 left-0 z-[999] flex h-14 w-full items-center justify-around bg-secondary">
-                <NuxtLink v-for="link in navigation" :key="link.to" :to="link.to">
-                    <Icon :name="route.path === link.to ? link.icon : link.icon + '-outline'" />
-                </NuxtLink>
-            </div>
+            <MobileNavbar />
         </div>
         <div class="relative hidden w-full flex-col items-center lg:flex">
             <div class="absolute top-40 z-10 flex h-[65px] w-full justify-between bg-secondary p-2 pl-80 pr-10">
@@ -82,28 +75,4 @@
     const router = useRouter()
 
     const sidebarVisibility = ref(false)
-
-    const navigation = ref([
-        {
-            to: "/",
-            icon: "material-symbols:home",
-        },
-        {
-            to: "/user/favorites",
-            icon: "material-symbols:favorite",
-        },
-        {
-            to: "/location",
-            icon: "material-symbols:location-on",
-        },
-        {
-            to: "/user",
-            icon: "material-symbols:person",
-        },
-        {
-            to: "/myshop",
-            icon: "material-symbols:storefront",
-        },
-    ])
-    // TODO: konditionales Rendering der storefront!
 </script>
