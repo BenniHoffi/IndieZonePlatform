@@ -8,5 +8,6 @@
     definePageMeta({
         title: "User Feedback",
         layout: "user",
+        middleware: ["auth"],
     })
 </script>

@@ -8,43 +8,28 @@
                     <h3>Wo willst du stöbern?</h3>
                 </template>
                 <template #content>
-                    <div class="text-on-surface-variant">
-                        <div v-if="step === ''">
+                    <div class="flex flex-col items-center gap-4 text-on-surface-variant">
+                        <div>
                             Um dir relevante Produkte anzeigen zu können, teile uns mit in welcher Umgebung du stöbern willst.
                         </div>
-                        <div v-else-if="step === 'address'">
-                            <div>Gib hier deine Adresse ein</div>
-                            <br />
-                            <!-- <AddressSearch @update="" /> -->
-                        </div>
+                        <AutoComplete
+                            v-model="city"
+                            placeholder="Stadt eingeben"
+                            :suggestions="allowedCities"
+                            dropdown
+                            class="w-full"
+                            :pt="{ input: 'bg-surface-dim border-0 w-full rounded-xl focus:ring-0' }"
+                            @item-select="setLocation"
+                            @complete="search" />
+                        <div>oder</div>
+                        <Button class="self-end" outlined>GPS nutzen</Button>
                     </div>
                 </template>
                 <template #footer>
-                    <div v-if="step === ''" class="flex justify-evenly gap-4">
-                        <button
-                            class="rounded-[4px] px-3 py-[10px] text-label-large hover:bg-primary hover:bg-opacity-[8%]"
-                            @click="step = 'address'">
-                            Adresse eingeben
-                        </button>
-                        <button
-                            class="rounded-[4px] px-3 py-[10px] text-label-large hover:bg-primary hover:bg-opacity-[8%]"
-                            @click="step = 'gps'">
-                            GPS verwenden
-                        </button>
+                    <div class="flex w-full justify-around gap-4">
+                        <Button label="Registrieren" outlined @click="navigateTo('/signup')"></Button>
+                        <Button label="Einloggen" @click="navigateTo('/login')"></Button>
                     </div>
-                    <div v-else-if="step !== 'radius'" class="flex justify-between gap-4">
-                        <button
-                            class="rounded-[4px] px-3 py-[10px] text-label-large hover:bg-primary hover:bg-opacity-[8%]"
-                            @click="step = ''">
-                            Zurück
-                        </button>
-                        <button
-                            class="rounded-[4px] px-3 py-[10px] text-label-large hover:bg-primary hover:bg-opacity-[8%]"
-                            @click="step = 'radius'">
-                            Weiter
-                        </button>
-                    </div>
-                    <div v-else></div>
                 </template>
             </Card>
         </div>
@@ -60,19 +45,19 @@
                         <p class="text-title-large">Einkaufen</p>
                     </div>
                 </NuxtLink>
-                <NuxtLink to=".">
+                <NuxtLink to="/">
                     <div class="flex flex-col items-center gap-4">
                         <NuxtImg class="max-h-44" src="/images/circ2.png" />
                         <p class="text-ellipsis text-title-large">Veranstaltungen</p>
                     </div>
                 </NuxtLink>
-                <NuxtLink to=".">
+                <NuxtLink to="/">
                     <div class="flex flex-col items-center gap-4">
                         <NuxtImg class="max-h-44" src="/images/circ3.png" />
                         <p class="text-title-large">Vereine</p>
                     </div>
                 </NuxtLink>
-                <NuxtLink to=".">
+                <NuxtLink to="/">
                     <div class="flex flex-col items-center gap-4">
                         <NuxtImg class="max-h-44" src="/images/circ4.png" />
                         <p class="text-title-large">Deine Stadt</p>
@@ -84,6 +69,23 @@
 </template>
 
 <script lang="ts" setup>
+    import type { AutoCompleteItemSelectEvent, AutoCompleteCompleteEvent } from "primevue/autocomplete"
     const location = useLocationCookie()
-    const step = ref("")
+
+    const city = ref("")
+
+    const allowedCities = ref<string[]>()
+
+    function search(event: AutoCompleteCompleteEvent) {
+        allowedCities.value = ["Leipzig", "Thübingen", "Berlin"]
+    }
+
+    function setLocation(event: AutoCompleteItemSelectEvent) {
+        console.log(event.value)
+        // location.value = {
+        //     place_name: event.query,
+        //     center: [0, 0],
+        //     bbox: [0, 0, 0, 0],
+        // }
+    }
 </script>

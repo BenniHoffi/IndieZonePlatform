@@ -1,5 +1,5 @@
 <template>
-    <div class="relative">
+    <div class="relative z-50">
         <Transition>
             <div
                 v-if="open"
@@ -107,3 +107,21 @@
     const open = defineModel()
     const minimized = useState<boolean>("usersidebarMinimized", () => false)
 </script>
+
+<style scoped>
+    .v-enter-from {
+        transform: translateX(-100%);
+    }
+    .v-enter-active {
+        transition: transform 0.3s ease;
+    }
+    .v-leave-from {
+        transform: translateX(0);
+    }
+    .v-leave-active {
+        transition: transform 0.3s ease;
+    }
+    .v-leave-to {
+        transform: translateX(-100%);
+    }
+</style>

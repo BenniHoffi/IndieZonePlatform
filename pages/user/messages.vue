@@ -36,6 +36,7 @@
     definePageMeta({
         title: "User Messages",
         layout: "user",
+        middleware: ["auth"],
     })
 
     const breakpoints = useBreakpoints(breakpointsTailwind)
