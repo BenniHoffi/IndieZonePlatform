@@ -42,7 +42,7 @@
                 <NuxtLink class="z-20" to="/">
                     <NuxtImg src="/images/IndieZoneDesktopLogo.png" alt="IndieZoneLogo" class="h-56" />
                 </NuxtLink>
-                <div class="flex w-60 items-center justify-between gap-4 text-label-medium">
+                <div class="flex w-80 items-center justify-between gap-4 text-label-medium">
                     <NuxtLink to="/location">
                         <div class="flex flex-col items-center">
                             <Icon name="material-symbols:location-on-outline" />
@@ -60,6 +60,12 @@
                             <Icon name="material-symbols:person-outline" />
                             <div v-if="user">Profil</div>
                             <div v-else>Login</div>
+                        </div>
+                    </NuxtLink>
+                    <NuxtLink v-if="user?.app_metadata.shops" to="myshop">
+                        <div class="flex flex-col items-center">
+                            <Icon name="material-symbols:storefront-outline" />
+                            <div class="whitespace-nowrap">Mein Shop</div>
                         </div>
                     </NuxtLink>
                 </div>

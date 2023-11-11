@@ -84,7 +84,7 @@
 </template>
 
 <script setup lang="ts">
-    import { DataTableRowEditSaveEvent } from "primevue/datatable"
+    import type { DataTableRowEditSaveEvent } from "primevue/datatable"
     import { FilterMatchMode } from "primevue/api"
     import { useToast } from "primevue/usetoast"
 
