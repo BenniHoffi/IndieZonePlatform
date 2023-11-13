@@ -24,15 +24,16 @@
             </div>
             <MobileNavbar />
         </div>
-        <div class="relative hidden w-full flex-col items-center lg:flex">
-            <div class="absolute top-40 z-10 flex h-[65px] w-full justify-between bg-secondary p-2 pl-80 pr-10">
+        <div class="relative hidden w-full flex-col items-center md:flex">
+            <div
+                class="absolute top-40 z-10 flex h-[65px] w-full justify-between gap-4 bg-secondary p-2 pl-64 pr-10 lg:pl-72 xl:pl-80">
                 <div class="relative w-[45%]">
                     <button class="absolute right-0 aspect-square h-full" @click="console.log('Suche...')">
                         <Icon name="material-symbols:search" />
                     </button>
                     <MainSearchbar />
                 </div>
-                <div class="flex h-full items-center gap-10 xl:gap-16">
+                <div class="flex h-full items-center gap-4 whitespace-nowrap lg:gap-8 xl:gap-16">
                     <NuxtLink to="/products">Produkte</NuxtLink>
                     <NuxtLink to="/shops">Läden</NuxtLink>
                     <NuxtLink to="/location">Meine Umgebung</NuxtLink>
@@ -42,7 +43,7 @@
                 <NuxtLink class="z-20" to="/">
                     <NuxtImg src="/images/IndieZoneDesktopLogo.png" alt="IndieZoneLogo" class="h-56" />
                 </NuxtLink>
-                <div class="flex w-80 items-center justify-between gap-4 text-label-medium">
+                <div class="flex w-fit items-center justify-between gap-8 whitespace-nowrap text-label-medium">
                     <NuxtLink to="/location">
                         <div class="flex flex-col items-center">
                             <Icon name="material-symbols:location-on-outline" />
@@ -65,7 +66,7 @@
                     <NuxtLink v-if="user?.app_metadata.shops" to="myshop">
                         <div class="flex flex-col items-center">
                             <Icon name="material-symbols:storefront-outline" />
-                            <div class="whitespace-nowrap">Mein Shop</div>
+                            Mein Shop
                         </div>
                     </NuxtLink>
                 </div>

@@ -6,7 +6,7 @@ export default async function () {
     const { data: myshop } = await useAsyncData("myshop", async () => {
         const { data, error } = await supabase.from("shops").select("*").eq("id", myshopId).single()
         if (error) {
-            // TODO: error handling
+            console.log(error)
         }
         return data
     })

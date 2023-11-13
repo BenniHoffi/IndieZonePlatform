@@ -3,12 +3,24 @@
         <h1 class="text-display-medium font-bold">Role Editor</h1>
         <Dialog v-model:visible="dialogVisibility" modal header="Rolle Hinzufügen" class="w-full max-w-xl">
             <div class="flex flex-col items-center gap-2">
-                <p>
-                    Name: {{ user.name }}<br />
-                    Username: {{ user.username }}<br />
-                    E-Mail: {{ user.email }} <br />
-                    Group: {{ group.name }}
-                </p>
+                <div>
+                    <div class="flex gap-2">
+                        <div class="font-bold">Name:</div>
+                        {{ user.name }}
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="font-bold">Username:</div>
+                        {{ user.username }}
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="font-bold">E-Mail:</div>
+                        {{ user.email }}
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="font-bold">Group:</div>
+                        {{ group.name }}
+                    </div>
+                </div>
                 <InputText v-model="role" @keyup.enter="addRole()" />
             </div>
             <template #footer>

@@ -8,5 +8,6 @@
     definePageMeta({
         title: "Mein Shop",
         layout: "myshop",
+        middleware: ["shopowner"],
     })
 </script>
