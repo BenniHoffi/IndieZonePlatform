@@ -96,6 +96,7 @@ export default defineNuxtConfig({
         },
         components: {
             include: "*",
+            exclude: ["Editor", "Chart"],
             // include: [
             //     { name: "Button", global: true },
             //     { name: "Password", global: true },
