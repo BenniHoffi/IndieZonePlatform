@@ -8,5 +8,6 @@
     definePageMeta({
         title: "User Score",
         layout: "user",
+        middleware: ["auth"],
     })
 </script>

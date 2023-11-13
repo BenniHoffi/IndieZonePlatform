@@ -1,7 +1,11 @@
 <template>
     <div class="w-full">
-        <FormKit type="form" id="loginForm" @submit="signIn" submit-label="Einloggen">
+        <FormKit type="form" id="loginForm" @submit="signIn" :actions="false">
             <FormKitSchema :schema="schema" />
+            <div class="w-full text-right text-label-medium">
+                <NuxtLink to="/" class="text-blue-700 underline">Passwort vergessen?</NuxtLink>
+            </div>
+            <FormKit type="submit" wrapper-class="flex justify-center" label="Jetzt Einloggen" :disabled="!turnstileToken" />
             <NuxtTurnstile v-model="turnstileToken" />
         </FormKit>
     </div>

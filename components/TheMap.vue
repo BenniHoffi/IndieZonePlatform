@@ -1,7 +1,7 @@
 <template>
     <div class="relative h-full w-full">
         <MapboxMap
-            map-id="map"
+            :map-id="'map' + id"
             class="absolute left-0 top-0"
             :options="{
                 style: 'mapbox://styles/mapbox/streets-v12',
@@ -31,6 +31,7 @@
         markers,
         geolocation = false,
         geocoder = false,
+        id,
     } = defineProps<{
         center?: mapboxgl.LngLatLike
         bounds?: mapboxgl.LngLatBoundsLike
@@ -38,5 +39,6 @@
         markers?: mapboxgl.LngLatLike[]
         geolocation?: boolean
         geocoder?: boolean
+        id?: string
     }>()
 </script>

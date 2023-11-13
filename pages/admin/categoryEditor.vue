@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-    import { TreeExpandedKeys, TreeNode } from "primevue/tree"
+    import type { TreeExpandedKeys, TreeNode } from "primevue/tree"
     import { useToast } from "primevue/usetoast"
     import { useConfirm } from "primevue/useconfirm"
 

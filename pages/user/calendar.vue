@@ -8,5 +8,6 @@
     definePageMeta({
         title: "User Calendar",
         layout: "user",
+        middleware: ["auth"],
     })
 </script>

@@ -8,5 +8,6 @@
     definePageMeta({
         title: "User Favorites",
         layout: "user",
+        middleware: ["auth"],
     })
 </script>

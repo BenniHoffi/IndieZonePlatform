@@ -22,6 +22,7 @@
                     <li><NuxtLink to="/admin/categoryEditor">Category Editor</NuxtLink></li>
                     <li><NuxtLink to="/admin/attributeEditor">Attribute Editor</NuxtLink></li>
                     <li><NuxtLink to="/admin/roleEditor">Role Editor</NuxtLink></li>
+                    <li><NuxtLink to="/admin/cities">IndieZone Cities</NuxtLink></li>
                 </ul>
             </template>
         </Sidebar>

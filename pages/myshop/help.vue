@@ -1,7 +1,13 @@
 <template>
     <div>
-        <h1 class="text-heading-large">Help</h1>
+        <h1 class="text-heading-large">Hilfe</h1>
     </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+    definePageMeta({
+        title: "Mein Shop - Hilfe",
+        layout: "myshop",
+        middleware: ["shopowner"],
+    })
+</script>

@@ -1,9 +1,12 @@
 <template>
-    <div class="flex flex-col items-center p-4">
-        <div>
+    <div class="flex flex-col items-center gap-4 p-4">
+        <div class="text-blue-700 underline">
             <NuxtLink v-if="groups && '158a70e3-64c0-49a5-b52f-37ed2b9b9b80' in groups" to="/admin">Admin</NuxtLink>
         </div>
-        <div>{{ groups }}</div>
+        <div class="w-fit max-w-full overflow-auto">
+            <pre>groups: {{ groups }}</pre>
+            <pre>shops: {{ shops }}</pre>
+        </div>
         <Button label="Ausloggen" @click="signOut" />
     </div>
 </template>
@@ -21,6 +24,10 @@
 
     const groups = computed(() => {
         return user.value?.app_metadata.groups
+    })
+
+    const shops = computed(() => {
+        return user.value?.app_metadata.shops
     })
 
     const toast = useToast()

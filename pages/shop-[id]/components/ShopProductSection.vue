@@ -21,7 +21,7 @@
         </div>
         <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             <div v-for="product in productArray" class="relative h-full rounded-lg bg-user-surface-container-low shadow-lg">
-                <NuxtImg class="w-full rounded-t-lg" src="~/assets/dummyImages/mediaSmall.png" />
+                <NuxtImg class="w-full rounded-t-lg" src="dummyImages/mediaSmall.png" />
                 <!-- TODO: favourite button sollte noch togglen (irgendwann) -->
                 <button class="absolute right-0 top-0 p-2" @click="">
                     <Icon name="material-symbols:favorite-outline" />
@@ -38,32 +38,32 @@
     const categoryDropdownOpen = ref(false)
     const productArray = [
         {
-            imgsrc: "~/assets/dummyImages/media.png",
+            imgsrc: "dummyImages/media.png",
             name: "Leggins extra lang",
             favorite: true,
         },
         {
-            imgsrc: "~/assets/dummyImages/media.png",
+            imgsrc: "dummyImages/media.png",
             name: "Leggins extra lang",
         },
         {
-            imgsrc: "~/assets/dummyImages/media.png",
+            imgsrc: "dummyImages/media.png",
             name: "Leggins extra lang",
         },
         {
-            imgsrc: "~/assets/dummyImages/media.png",
+            imgsrc: "dummyImages/media.png",
             name: "Leggins extra lang",
         },
         {
-            imgsrc: "~/assets/dummyImages/media.png",
+            imgsrc: "dummyImages/media.png",
             name: "Leggins extra lang",
         },
         {
-            imgsrc: "~/assets/dummyImages/media.png",
+            imgsrc: "dummyImages/media.png",
             name: "Leggins extra lang",
         },
         {
-            imgsrc: "~/assets/dummyImages/media.png",
+            imgsrc: "dummyImages/media.png",
             name: "Leggins extra lang",
         },
     ]

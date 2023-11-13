@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Dashboard title="dashboard" />
+        <h1 class="text-heading-large">Mein Shop</h1>
     </div>
 </template>
 
@@ -8,5 +8,6 @@
     definePageMeta({
         title: "Mein Shop",
         layout: "myshop",
+        middleware: ["shopowner"],
     })
 </script>
