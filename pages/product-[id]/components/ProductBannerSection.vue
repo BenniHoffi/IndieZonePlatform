@@ -18,7 +18,7 @@
                 <button class="absolute left-3 top-3 lg:hidden" @click="router.back()">
                     <Icon name="material-symbols:arrow-back" />
                 </button>
-                <button class="absolute right-3 top-3 lg:hidden" @click="isFavorite = !isFavorite">
+                <button class="absolute right-3 top-3 lg:hidden" @click="favesDialogVisibility = true">
                     <div v-if="isFavorite" class="text-secondary">
                         <Icon name="material-symbols:favorite" />
                     </div>
@@ -51,10 +51,7 @@
             <div class="hidden gap-2 py-4 lg:flex lg:justify-around">
                 <Button label="Auf meine Route" size="small" />
                 <Button label="Auf Karte anzeigen" size="small" outlined />
-                <Button
-                    class="aspect-square text-secondary"
-                    size="small"
-                    @click="(isFavorite = !isFavorite), (visibleFaves = true)">
+                <Button class="aspect-square text-secondary" size="small" @click="favesDialogVisibility = true">
                     <template #icon>
                         <Icon v-if="isFavorite" name="material-symbols:favorite" />
                         <Icon v-else name="material-symbols:favorite-outline" />
@@ -62,66 +59,12 @@
                 </Button>
             </div>
         </div>
-
-        <Dialog v-model:visible="visibleFaves" modal :draggable="false" :position="'bottom'">
-            <template #container="">
-                <div class="max-h-[264px] w-[404px] rounded-xl bg-gray-600 p-4 text-user-surface-container shadow-md">
-                    <div class="relative flex justify-center pb-2 text-label-large font-bold">
-                        Als Favorit merken
-
-                        <button class="absolute right-0" @click="visibleFaves = false">
-                            <Icon name="material-symbols:close" />
-                        </button>
-                    </div>
-                    <div class="h-[144px] w-full overflow-auto pb-4">
-                        <div v-for="list in lists" class="flex items-center justify-between">
-                            <div class="text-body-small">{{ list.name }}</div>
-                            <Button
-                                text
-                                size="small"
-                                class="text-label-medium font-bold text-user-surface-container"
-                                @click="openDialog(2)"
-                                >Merken</Button
-                            >
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-2">
-                        <p class="text-body-medium">Neue Liste erstellen</p>
-                        <button class="px-6" @click="openDialog(1)">
-                            <Icon name="material-symbols:add" />
-                        </button>
-                    </div>
-                </div>
-            </template>
-        </Dialog>
-
-        <Dialog v-model:visible="visibleNewList" modal :draggable="false" :position="'bottom'">
-            <template #container="">
-                <div class="max-h-[264px] w-[404px] rounded-xl bg-gray-600 p-4 text-user-surface-container shadow-md">
-                    <div class="relative flex justify-center text-label-large font-bold">
-                        Neue Liste erstellen
-                        <button class="absolute right-0" @click="visibleNewList = false">
-                            <Icon name="material-symbols:close" />
-                        </button>
-                    </div>
-                </div>
-            </template>
-        </Dialog>
-        <Dialog v-model:visible="visibleConfirmFave" modal :draggable="false" :position="'bottom'">
-            <template #container="">
-                <div class="max-h-[264px] w-[404px] rounded-xl bg-gray-600 p-4 text-user-surface-container shadow-md">
-                    <div class="flex items-center justify-between text-body-medium font-bold">
-                        Gemerkt auf: Meine Liste TODO!
-                        <button class="text-label-medium" @click="openDialog(0)">Ändern</button>
-                    </div>
-                </div>
-            </template>
-        </Dialog>
+        <FavesDialog v-model:visible="favesDialogVisibility" :id="product.id" />
     </section>
 </template>
 
 <script lang="ts" setup>
-    const props = defineProps<{
+    const { product } = defineProps<{
         product: any
     }>()
 
@@ -129,33 +72,7 @@
 
     const openingHoursOpen = ref(false)
 
-    const isFavorite = ref(false)
+    const { isFavorite } = await useFaveLists(product.id)
 
-    //TODO: automatishes schließen des Confirm-Dialoges benötigt!
-    function closeConfirm() {
-        visibleConfirmFave.value = false
-    }
-
-    function openDialog(index: number) {
-        visibleFaves.value = false
-        visibleNewList.value = false
-        visibleConfirmFave.value = false
-        dialoges.at(index)!.value = true
-    }
-
-    const visibleFaves = ref(false)
-    const visibleNewList = ref(false)
-    const visibleConfirmFave = ref(false)
-    const dialoges = [visibleFaves, visibleNewList, visibleConfirmFave]
-
-    const lists = [
-        { name: "Meine Liste", faves: ["123", "124", "125"] },
-        { name: "irgendwelcher Quatsch", faves: [] },
-        { name: "Lieblingsläden" },
-        { name: "Inspirationen" },
-        { name: "Lieblingsläden" },
-        { name: "Lieblingsläden" },
-        { name: "Lieblingsläden" },
-        { name: "Lieblingsläden" },
-    ]
+    const favesDialogVisibility = ref(false)
 </script>

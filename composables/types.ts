@@ -52,3 +52,7 @@ interface Message {
     created_at: Date
     read: boolean
 }
+
+interface favesLists {
+    [key: string]: string[]
+}

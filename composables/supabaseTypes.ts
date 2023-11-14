@@ -3,6 +3,27 @@ type Json = string | number | boolean | null | { [key: string]: Json | undefined
 interface Database {
     public: {
         Tables: {
+            allowed_cities: {
+                Row: {
+                    bbox: unknown | null
+                    bbox_json: Json
+                    id: string
+                    name: string
+                }
+                Insert: {
+                    bbox?: unknown | null
+                    bbox_json: Json
+                    id?: string
+                    name: string
+                }
+                Update: {
+                    bbox?: unknown | null
+                    bbox_json?: Json
+                    id?: string
+                    name?: string
+                }
+                Relationships: []
+            }
             attributes: {
                 Row: {
                     id: number
@@ -45,6 +66,48 @@ interface Database {
                 }
                 Relationships: []
             }
+            chats: {
+                Row: {
+                    created_at: string
+                    id: string
+                    shop_id: string | null
+                    shopname: string
+                    user_id: string | null
+                    username: string
+                }
+                Insert: {
+                    created_at?: string
+                    id?: string
+                    shop_id?: string | null
+                    shopname: string
+                    user_id?: string | null
+                    username: string
+                }
+                Update: {
+                    created_at?: string
+                    id?: string
+                    shop_id?: string | null
+                    shopname?: string
+                    user_id?: string | null
+                    username?: string
+                }
+                Relationships: [
+                    {
+                        foreignKeyName: "chats_shop_id_fkey"
+                        columns: ["shop_id"]
+                        isOneToOne: false
+                        referencedRelation: "shops"
+                        referencedColumns: ["id"]
+                    },
+                    {
+                        foreignKeyName: "chats_user_id_fkey"
+                        columns: ["user_id"]
+                        isOneToOne: false
+                        referencedRelation: "users"
+                        referencedColumns: ["id"]
+                    },
+                ]
+            }
             group_users: {
                 Row: {
                     created_at: string | null
@@ -71,12 +134,14 @@ interface Database {
                     {
                         foreignKeyName: "group_users_group_id_fkey"
                         columns: ["group_id"]
+                        isOneToOne: false
                         referencedRelation: "groups"
                         referencedColumns: ["id"]
                     },
                     {
                         foreignKeyName: "group_users_user_id_fkey"
                         columns: ["user_id"]
+                        isOneToOne: false
                         referencedRelation: "users"
                         referencedColumns: ["id"]
                     },
@@ -100,29 +165,74 @@ interface Database {
                 }
                 Relationships: []
             }
+            messages: {
+                Row: {
+                    chat_id: string
+                    created_at: string
+                    deleted: boolean
+                    from: string
+                    id: string
+                    message: string
+                    read: boolean
+                    shop_sender_name: string | null
+                }
+                Insert: {
+                    chat_id: string
+                    created_at?: string
+                    deleted?: boolean
+                    from: string
+                    id?: string
+                    message: string
+                    read?: boolean
+                    shop_sender_name?: string | null
+                }
+                Update: {
+                    chat_id?: string
+                    created_at?: string
+                    deleted?: boolean
+                    from?: string
+                    id?: string
+                    message?: string
+                    read?: boolean
+                    shop_sender_name?: string | null
+                }
+                Relationships: [
+                    {
+                        foreignKeyName: "messages_chat_id_fkey"
+                        columns: ["chat_id"]
+                        isOneToOne: false
+                        referencedRelation: "chats"
+                        referencedColumns: ["id"]
+                    },
+                ]
+            }
             notifications: {
                 Row: {
                     created_at: string | null
                     id: string
-                    label: string
+                    message: string
+                    title: string
                     user_id: string
                 }
                 Insert: {
                     created_at?: string | null
                     id: string
-                    label: string
+                    message: string
+                    title: string
                     user_id: string
                 }
                 Update: {
                     created_at?: string | null
                     id?: string
-                    label?: string
+                    message?: string
+                    title?: string
                     user_id?: string
                 }
                 Relationships: [
                     {
                         foreignKeyName: "notifications_user_id_fkey"
                         columns: ["user_id"]
+                        isOneToOne: false
                         referencedRelation: "users"
                         referencedColumns: ["id"]
                     },
@@ -157,12 +267,14 @@ interface Database {
                     {
                         foreignKeyName: "product_rating_product_id_fkey"
                         columns: ["product_id"]
+                        isOneToOne: false
                         referencedRelation: "products"
                         referencedColumns: ["id"]
                     },
                     {
                         foreignKeyName: "product_rating_user_id_fkey"
                         columns: ["user_id"]
+                        isOneToOne: false
                         referencedRelation: "users"
                         referencedColumns: ["id"]
                     },
@@ -212,12 +324,14 @@ interface Database {
                     {
                         foreignKeyName: "products_category_fkey"
                         columns: ["category"]
+                        isOneToOne: false
                         referencedRelation: "categories"
                         referencedColumns: ["id"]
                     },
                     {
                         foreignKeyName: "products_shop_id_fkey"
                         columns: ["shop_id"]
+                        isOneToOne: false
                         referencedRelation: "shops"
                         referencedColumns: ["id"]
                     },
@@ -294,6 +408,7 @@ interface Database {
                     {
                         foreignKeyName: "shops_owner_id_fkey"
                         columns: ["owner_id"]
+                        isOneToOne: false
                         referencedRelation: "users"
                         referencedColumns: ["id"]
                     },
@@ -304,8 +419,8 @@ interface Database {
                     bday: string | null
                     created_at: string | null
                     email: string
-                    favorite_products: string[] | null
-                    favorite_shops: string[] | null
+                    favorite_products: Json | null
+                    favorite_shops: Json | null
                     groups: Json | null
                     id: string
                     name: string | null
@@ -315,8 +430,8 @@ interface Database {
                     bday?: string | null
                     created_at?: string | null
                     email: string
-                    favorite_products?: string[] | null
-                    favorite_shops?: string[] | null
+                    favorite_products?: Json | null
+                    favorite_shops?: Json | null
                     groups?: Json | null
                     id: string
                     name?: string | null
@@ -326,8 +441,8 @@ interface Database {
                     bday?: string | null
                     created_at?: string | null
                     email?: string
-                    favorite_products?: string[] | null
-                    favorite_shops?: string[] | null
+                    favorite_products?: Json | null
+                    favorite_shops?: Json | null
                     groups?: Json | null
                     id?: string
                     name?: string | null
@@ -337,6 +452,7 @@ interface Database {
                     {
                         foreignKeyName: "users_id_fkey"
                         columns: ["id"]
+                        isOneToOne: true
                         referencedRelation: "users"
                         referencedColumns: ["id"]
                     },
@@ -356,6 +472,17 @@ interface Database {
             _ltree_gist_options: {
                 Args: {
                     "": unknown
+                }
+                Returns: undefined
+            }
+            add_allowed_city: {
+                Args: {
+                    name: string
+                    west: number
+                    south: number
+                    east: number
+                    north: number
+                    json: Json
                 }
                 Returns: undefined
             }
