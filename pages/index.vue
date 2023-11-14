@@ -15,7 +15,6 @@
                 </div>
             </div>
         </DevOnly>
-        <h1 class="text-headline-medium">Self hosted runners are great!</h1>
         <HomeTopSection />
 
         <ShowcaseSection title="Neu in deiner IndieZone" :cards="cards" bg-color="bg-secondary" />
