@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1 class="text-heading-large">Datenschutz</h1>
-        <div>wir haben deine daten hehe</div>
+        <h1 class="text-headline-large font-bold">Datenschutz</h1>
     </div>
 </template>
 
