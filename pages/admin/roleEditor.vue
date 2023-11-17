@@ -34,6 +34,13 @@
             <Column field="email" header="E-Mail" />
             <Column field="groups" header="Gruppen und Rollen">
                 <template #body="{ data }">
+                    <div v-if="!data.groups['158a70e3-64c0-49a5-b52f-37ed2b9b9b80']">
+                        <Button
+                            outlined
+                            label="add to admin"
+                            class="mb-4"
+                            @click="openDialog(data.id, { name: 'admin', roles: [] }, '158a70e3-64c0-49a5-b52f-37ed2b9b9b80')" />
+                    </div>
                     <div
                         v-for="(group, groupId) in <Record<string, { name: string; roles: string[] }>>data.groups"
                         :key="groupId">

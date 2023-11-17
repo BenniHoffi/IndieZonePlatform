@@ -5,8 +5,8 @@ export default async function () {
         data: cities,
         refresh: refreshCities,
         pending: citiesPending,
-    } = await useAsyncData("allowed_cities", async () => {
-        const { data, error } = await supabase.from("allowed_cities").select("*")
+    } = await useLazyAsyncData("allowed_cities", async () => {
+        const { data, error } = await supabase.from("allowed_cities").select("id, name, bbox_json")
         if (error) {
             console.log(error)
         }

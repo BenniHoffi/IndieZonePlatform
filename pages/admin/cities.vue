@@ -1,45 +1,59 @@
 <template>
     <div>
         <h1 class="mb-10 text-headline-medium font-bold">IndieZone Cities</h1>
-        <Dialog v-model:visible="dialogVisibility" modal header="Add City" class="w-full max-w-lg">
-            <ClientOnly>
-                <div>
-                    <AutoComplete
-                        v-model="city"
-                        inputId="city-autofill"
-                        option-label="name"
-                        :suggestions="suggestions"
-                        @complete="search"
-                        @item-select="retrieve"
-                        class="mb-4 w-full"
-                        :pt="{ input: 'w-full' }" />
-                    <Button @click="addCity()" :disabled="!selectedCity"> <Icon name="material-symbols:add" /> Add </Button>
-                    <div class="my-4 h-[350px] w-full">
-                        <TheMap :center="mapCenter" :bounds="mapBounds" :markers="mapCenter ? [mapCenter] : []" id="add" />
-                    </div>
-                    <pre>
-                        mapBounds: {{ mapBounds }}
-                    </pre>
-                    <DevOnly>
-                        <pre>selected city: {{ selectedCity }}</pre>
-                        <pre>suggestions: {{ suggestions }}</pre>
-                    </DevOnly>
+        <Dialog v-model:visible="dialogVisibility" modal header="Add City" class="w-full max-w-lg" @hide="resetDialog()">
+            <div class="flex flex-col">
+                <AutoComplete
+                    v-model="city"
+                    inputId="city-autofill"
+                    option-label="name"
+                    :suggestions="suggestions"
+                    @complete="search"
+                    @item-select="retrieve"
+                    class="mb-4 w-full"
+                    :pt="{ input: 'w-full' }" />
+                <div class="my-4 aspect-square w-full border border-primary">
+                    <TheMap :bounds="initialMapBounds" @update:bounds="(bounds) => (mapBounds = bounds)" id="add" />
                 </div>
-            </ClientOnly>
+                <Button @click="addCity()" :disabled="!selectedCity" class="self-end">
+                    <Icon name="material-symbols:add" class="mr-2" />
+                    Add
+                </Button>
+                <DevOnly>
+                    <pre>mapBounds: {{ mapBounds }}</pre>
+                    <pre>selected city: {{ selectedCity }}</pre>
+                    <pre>suggestions: {{ suggestions }}</pre>
+                </DevOnly>
+            </div>
         </Dialog>
-        <Button label="Add City" @click="dialogVisibility = true">
-            <template #icon>
-                <Icon name="material-symbols:add" />
-            </template>
+        <Button @click="dialogVisibility = true">
+            <Icon name="material-symbols:add" class="mr-2" />
+            Add City
         </Button>
-        <DataTable :value="cities" v-model:filters="filters" filter-display="row">
-            <Column field="name" header="Name" />
+        <DataTable :value="cities" v-model:filters="filters" filter-display="row" :loading="citiesPending">
+            <Column field="name" header="Name">
+                <template #filter="{ filterModel, filterCallback }">
+                    <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" />
+                </template>
+                <template #loading>
+                    <ProgressSpinner />
+                </template>
+            </Column>
             <Column header="Map">
                 <template #body="{ data }">
-                    <div class="h-[300px] w-[500px]">
+                    <div class="aspect-square h-[300px] border border-primary">
                         <!-- <pre>{{ data }}</pre> -->
-                        <TheMap :center="data.center" :bounds="data.bbox" :markers="[data.center]" :id="data.name" />
+                        <TheMap :bounds="data.bbox_json" :id="data.name" />
                     </div>
+                </template>
+            </Column>
+            <Column>
+                <template #body="{ data }">
+                    <Button rounded text severity="danger" @click="deleteCity(data.id)">
+                        <template #icon>
+                            <Icon name="material-symbols:delete-outline" />
+                        </template>
+                    </Button>
                 </template>
             </Column>
         </DataTable>
@@ -71,8 +85,8 @@
     const city = ref()
     const suggestions = ref()
     const selectedCity = ref()
-    const mapCenter = ref<mapboxgl.LngLat>()
-    const mapBounds = ref()
+    const initialMapBounds = ref<mapboxgl.LngLatBoundsLike>()
+    const mapBounds = ref<mapboxgl.LngLatBoundsLike>()
 
     const runtimeConfig = useRuntimeConfig()
 
@@ -97,19 +111,20 @@
     async function retrieve(event: AutoCompleteItemSelectEvent) {
         if (session.canRetrieve(event.value)) {
             selectedCity.value = (await session.retrieve(event.value)).features[0]
-            mapCenter.value = new mapboxgl.LngLat(
-                selectedCity.value.properties.coordinates.longitude,
-                selectedCity.value.properties.coordinates.latitude
-            )
-            mapBounds.value = selectedCity.value.properties.bbox
+            initialMapBounds.value = selectedCity.value.properties.bbox
         }
     }
 
     async function addCity() {
-        const { error } = await supabase.from("allowed_cities").insert({
+        if (!mapBounds.value) return
+        mapBounds.value = mapboxgl.LngLatBounds.convert(mapBounds.value)
+        const { error } = await supabase.rpc("add_allowed_city", {
             name: selectedCity.value.properties.name,
-            center: [selectedCity.value.properties.coordinates.longitude, selectedCity.value.properties.coordinates.latitude],
-            bbox: selectedCity.value.properties.bbox,
+            west: mapBounds.value.getWest(),
+            south: mapBounds.value.getSouth(),
+            east: mapBounds.value.getEast(),
+            north: mapBounds.value.getNorth(),
+            json: mapBounds.value.toArray(),
         })
         if (error) {
             toast.add({
@@ -126,10 +141,35 @@
                 life: 5000,
             })
         }
-        city.value = ""
-        selectedCity.value = null
-        suggestions.value = []
-        refreshCities()
         dialogVisibility.value = false
+        refreshCities()
+    }
+
+    async function deleteCity(id: string) {
+        const { error } = await supabase.from("allowed_cities").delete().eq("id", id)
+        if (error) {
+            toast.add({
+                severity: "error",
+                summary: "Error",
+                detail: error.message,
+                life: 5000,
+            })
+        } else {
+            toast.add({
+                severity: "success",
+                summary: "Success",
+                detail: "City deleted",
+                life: 5000,
+            })
+            cities.value?.splice(cities.value?.findIndex((city) => city.id === id), 1)
+        }
+    }
+
+    function resetDialog() {
+        city.value = ""
+        mapBounds.value = undefined
+        selectedCity.value = undefined
+        suggestions.value = []
+        initialMapBounds.value = undefined
     }
 </script>
