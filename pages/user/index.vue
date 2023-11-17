@@ -3,10 +3,12 @@
         <div class="text-blue-700 underline">
             <NuxtLink v-if="groups && '158a70e3-64c0-49a5-b52f-37ed2b9b9b80' in groups" to="/admin">Admin</NuxtLink>
         </div>
-        <div class="w-fit max-w-full overflow-auto">
-            <pre>groups: {{ groups }}</pre>
-            <pre>shops: {{ shops }}</pre>
-        </div>
+        <DevOnly>
+            <div class="w-fit max-w-full overflow-auto">
+                <pre>groups: {{ groups }}</pre>
+                <pre>shops: {{ shops }}</pre>
+            </div>
+        </DevOnly>
         <Button label="Ausloggen" @click="signOut" />
     </div>
 </template>
