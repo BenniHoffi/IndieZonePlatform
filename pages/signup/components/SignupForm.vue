@@ -66,7 +66,6 @@
             label: "Geburtstag",
             validation: "required",
             dateFormat: "dd.mm.yy",
-            view: "year",
             showIcon: true,
             maxDate: dateBefore,
             touchUI: true,
