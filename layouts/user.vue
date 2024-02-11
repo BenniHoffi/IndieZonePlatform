@@ -5,13 +5,13 @@
                 <button class="aspect-square h-full" @click="router.back()">
                     <Icon name="material-symbols:arrow-back" />
                 </button>
-                <button class="aspect-square h-full" @click="sidebarOpen = !sidebarOpen">
+                <button class="aspect-square h-full" @click="mdAndLarger = !mdAndLarger">
                     <Icon name="material-symbols:menu" />
                 </button>
             </div>
             <MobileNavbar />
         </header>
-        <UserSidebar v-model="sidebarOpen" />
+        <UserSidebar v-model="mdAndLarger" v-model:minimized="sidebarMinimized" />
         <main class="z-0 w-full grow pb-16 transition-[padding]" :class="sidebarMinimized ? 'lg:pl-[84px]' : 'lg:pl-72'">
             <slot />
         </main>
@@ -22,9 +22,8 @@
     import { breakpointsTailwind } from "@vueuse/core"
     const breakpoints = useBreakpoints(breakpointsTailwind)
     const mdAndLarger = breakpoints.greaterOrEqual("md")
-    const sidebarOpen = ref(mdAndLarger)
 
-    const sidebarMinimized = useState("usersidebarMinimized")
+    const sidebarMinimized = ref<boolean>(false)
 
     const router = useRouter()
 </script>
