@@ -15,7 +15,6 @@ export default defineNuxtConfig({
         "nuxt-mapbox",
     ],
     vue: {
-        defineModel: true,
         propsDestructure: true,
     },
     components: ["~/components", ...scanComponentsDir(path.join(__dirname, "pages"))],
