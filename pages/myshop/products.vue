@@ -1,16 +1,14 @@
 <template>
     <div>
-        <h1 class="text-headline-large">Mein Shop</h1>
+        <h1 class="text-headline-large">Artikelübersicht</h1>
         <Button class="mt-4" @click="navigateTo('/myshop/addProduct')">Artikel hinzufügen</Button>
-        <pre>{{ shopData }}</pre>
     </div>
 </template>
 
 <script lang="ts" setup>
-    const shopData = await useShopData()
     definePageMeta({
-        title: "Mein Shop",
+        title: "Artikelübersicht",
+        description: "Verwalten Sie Ihre Artikel.",
         layout: "myshop",
-        middleware: ["shopowner"],
     })
 </script>

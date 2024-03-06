@@ -1,4 +1,4 @@
-export default function () {
+export default async function () {
     const shopData = {
         id: 1,
         name: "Shop",
