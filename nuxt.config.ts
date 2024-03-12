@@ -26,12 +26,9 @@ export default defineNuxtConfig({
             mapboxApiToken: "",
         },
     },
-    build: {
-        transpile: ["nuxt", "primevue", "formkit-primevue"],
-    },
     css: [
         "/assets/google-fonts/css/google-fonts.css",
-        "/assets/css/primevue-theme.css",
+        // "/assets/css/primevue-theme.css",
         "primeicons/primeicons.css",
         // "@sfxcode/formkit-primevue/dist/sass/formkit-prime-inputs.scss",
         "@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss",
@@ -86,13 +83,12 @@ export default defineNuxtConfig({
             type: "module",
         },
     },
+    primevue: {
+        unstyled: true,
+        importPT: { from: "/presets/indiezone/" },
+    },
     mapbox: {
         accessToken: process.env.NUXT_PUBLIC_MAPBOX_API_TOKEN,
-    },
-    primevue: {
-        options: {
-            ripple: true,
-        },
     },
     googleFonts: {
         families: {
