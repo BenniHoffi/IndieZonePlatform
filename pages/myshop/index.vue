@@ -2,12 +2,12 @@
     <div>
         <h1 class="text-headline-large">Mein Shop</h1>
         <Button class="mt-4" @click="navigateTo('/myshop/addProduct')">Artikel hinzufügen</Button>
-        <pre>{{ shopData }}</pre>
+        <pre>{{ myshop }}</pre>
     </div>
 </template>
 
 <script lang="ts" setup>
-    const shopData = await useShopData()
+    const { myshop } = await useMyshop()
     definePageMeta({
         title: "Mein Shop",
         layout: "myshop",

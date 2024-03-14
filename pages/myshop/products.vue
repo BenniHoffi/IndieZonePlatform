@@ -2,6 +2,7 @@
     <div>
         <h1 class="text-headline-large">Artikelübersicht</h1>
         <Button class="mt-4" @click="navigateTo('/myshop/addProduct')">Artikel hinzufügen</Button>
+        <DataView :value="products"
     </div>
 </template>
 
@@ -11,4 +12,6 @@
         description: "Verwalten Sie Ihre Artikel.",
         layout: "myshop",
     })
+    const shopId = useShopId()
+    const { shopProducts, refreshShopProducts, shopProductsPending } = await useShopProducts(shopId.value)
 </script>
