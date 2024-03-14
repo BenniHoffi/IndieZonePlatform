@@ -2,7 +2,7 @@ export default {
     root: ({ props }) => ({
         class: [
             // Spacing and Shape
-            "my-4 mx-0",
+            "my-4 mx-2",
             "rounded-md",
             "border-solid border-0 border-l-[6px]",
 

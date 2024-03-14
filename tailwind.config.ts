@@ -4,8 +4,7 @@ import formKitTailwind from "@formkit/themes/tailwindcss"
 
 export default <Partial<Config>>{
     plugins: [formKitTailwind],
-    content: [`./formkit-tailwind-theme.ts`, `./node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}`, `presets/**/*.{js,vue,ts}`],
-    important: true,
+    content: [`presets/**/*.{js,vue,ts}`, `./formkit-tailwind-theme.ts`, `./node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}`],
     theme: {
         screens: {
             xxs: "385px",
