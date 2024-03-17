@@ -56,19 +56,21 @@
                             Favoriten
                         </div>
                     </NuxtLink>
-                    <NuxtLink :to="user ? '/user' : '/login'">
-                        <div class="flex flex-col items-center">
-                            <Icon name="material-symbols:person-outline" />
-                            <div v-if="user">Profil</div>
-                            <div v-else>Login</div>
-                        </div>
-                    </NuxtLink>
-                    <NuxtLink v-if="user?.app_metadata.shops" to="myshop">
-                        <div class="flex flex-col items-center">
-                            <Icon name="material-symbols:storefront-outline" />
-                            Mein Shop
-                        </div>
-                    </NuxtLink>
+                    <ClientOnly>
+                        <NuxtLink :to="user ? '/user' : '/login'">
+                            <div class="flex flex-col items-center">
+                                <Icon name="material-symbols:person-outline" />
+                                <div v-if="user">Profil</div>
+                                <div v-else>Login</div>
+                            </div>
+                        </NuxtLink>
+                        <NuxtLink v-if="user?.app_metadata.shops" to="myshop">
+                            <div class="flex flex-col items-center">
+                                <Icon name="material-symbols:storefront-outline" />
+                                Mein Shop
+                            </div>
+                        </NuxtLink>
+                    </ClientOnly>
                 </div>
             </div>
         </div>

@@ -4,8 +4,8 @@
             <div
                 v-if="open"
                 :class="minimized ? 'w-[80px] px-3' : 'w-72 px-5'"
-                class="fixed left-0 top-0 flex h-screen cursor-pointer flex-col justify-around overflow-hidden whitespace-nowrap rounded-r-2xl bg-primary py-10 text-white transition-all">
-                <div class="absolute right-4 top-4 lg:hidden" @click="open = false">
+                class="fixed left-0 top-0 z-[999] flex h-screen cursor-pointer flex-col justify-around overflow-hidden whitespace-nowrap rounded-r-2xl bg-primary py-10 text-white transition-all">
+                <div class="absolute right-4 top-4 md:hidden" @click="open = false">
                     <Icon name="material-symbols:close" />
                 </div>
                 <div>
@@ -50,7 +50,7 @@
                         :minimized="minimized" />
 
                     <div
-                        class="hidden w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover lg:flex"
+                        class="hidden w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover md:flex"
                         @click="minimized = !minimized">
                         <Icon :class="minimized ? '' : 'rotate-180'" name="material-symbols:double-arrow" />
                     </div>

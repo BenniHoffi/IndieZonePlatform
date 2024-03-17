@@ -13,7 +13,7 @@ export default async function (shopId: string) {
                 severity: "error",
                 summary: "Fehler beim Laden des Shops",
                 detail: error.message,
-                life: 3000,
+                life: 5000,
             })
         }
         return data

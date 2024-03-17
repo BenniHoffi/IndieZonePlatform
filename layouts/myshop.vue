@@ -9,13 +9,13 @@
             </button>
         </div>
         <Message
-            v-if="!shopData?.verified"
+            v-if="!shop?.verified"
             class="transition-[padding] md:mt-4"
-            :class="sidebarMinimized ? 'lg:ml-[84px]' : 'lg:ml-[18.5rem]'">
+            :class="lgAndSmaller ? 'md:ml-[84px]' : 'md:ml-[18.5rem]'">
             Ihr Laden ist noch nicht verifiziert. Sie können in der Zwischenzeit schon bis zu 50 Produkte einstellen.
         </Message>
-        <MyshopSidebar v-model:open="sidebarOpen" v-model:minimized="sidebarMinimized" />
-        <div class="grow transition-[padding]" :class="sidebarMinimized ? 'lg:pl-[84px]' : 'lg:pl-72'">
+        <MyshopSidebar v-model:open="sidebarOpen" v-model:minimized="lgAndSmaller" />
+        <div class="grow transition-[padding]" :class="lgAndSmaller ? 'md:pl-[84px]' : 'md:pl-72'">
             <main class="p-4 pb-10 lg:pb-4">
                 <slot />
             </main>
@@ -37,12 +37,13 @@
     import { breakpointsTailwind } from "@vueuse/core"
     const breakpoints = useBreakpoints(breakpointsTailwind)
     const mdAndLarger = breakpoints.greaterOrEqual("md")
+    const lgAndSmaller = breakpoints.smallerOrEqual("lg")
     const sidebarOpen = ref(mdAndLarger)
     const route = useRoute()
 
-    const sidebarMinimized = ref(false)
+    const shopId = useShopId()
 
-    const shopData = await useShopData()
+    const { shop } = await useShopData(shopId.value)
 
     const mobileBottomNavigationLinks = [
         {

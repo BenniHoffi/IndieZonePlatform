@@ -1,3 +1,4 @@
 export default function () {
-    return useState<string>("shopId")
+    const shopId = useCookie<string>("shopId")
+    return shopId
 }

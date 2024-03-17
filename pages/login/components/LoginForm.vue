@@ -6,7 +6,7 @@
                 <NuxtLink to="/" class="text-blue-700 underline">Passwort vergessen?</NuxtLink>
             </div>
             <FormKit type="submit" wrapper-class="flex justify-center" label="Jetzt Einloggen" :disabled="!turnstileToken" />
-            <NuxtTurnstile v-model="turnstileToken" />
+            <NuxtTurnstile ref="turnstile" v-model="turnstileToken" />
         </FormKit>
     </div>
 </template>
@@ -17,6 +17,7 @@
     const supabase = useSupabaseClient()
 
     const turnstileToken = ref()
+    const turnstile = ref()
 
     async function signIn(loginData: { email: string; password: string }) {
         const { error } = await supabase.auth.signInWithPassword({
@@ -33,6 +34,7 @@
                 detail: error.message,
                 life: 5000,
             })
+            turnstile.value?.reset()
         } else {
             navigateTo("/")
         }

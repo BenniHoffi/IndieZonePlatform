@@ -17,6 +17,9 @@ export default defineNuxtConfig({
     vue: {
         propsDestructure: true,
     },
+    experimental: {
+        asyncContext: true,
+    },
     components: ["~/components", ...scanComponentsDir(path.join(__dirname, "pages"))],
     imports: {
         dirs: ["pages/**/composables"],

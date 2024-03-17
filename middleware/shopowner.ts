@@ -1,6 +1,4 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
-    if (process.server) return
-
     const user = useSupabaseUser()
     const shopId = useShopId()
 

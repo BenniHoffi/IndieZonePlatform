@@ -1,21 +1,45 @@
 export default async function (shopId: string) {
     const supabase = useSupabaseClient<Database>()
-    const toast = useToast()
+    const { myshop } = await useMyshop()
+
     const {
         data: shopProducts,
         refresh: refreshShopProducts,
         pending: shopProductsPending,
-    } = await useAsyncData("shopProducts", async () => {
-        const { data, error } = await supabase.from("products").select("*").eq("shop_id", shopId)
+    } = await useAsyncData("shopProducts-" + shopId, async () => {
+        const { data, error } = await supabase.from("products").select("*").eq("shop_id", shopId).order("created_at")
         if (error) {
-            toast.add({
-                severity: "error",
-                summary: "Fehler beim Laden der Produkte",
-                detail: error.message,
-                life: 3000,
-            })
+            throw error
         }
         return data
     })
-    return { shopProducts, refreshShopProducts, shopProductsPending }
+    const shopProductsWithImageUrls = ref()
+
+    watch(
+        shopProducts,
+        async (newData) => {
+            if (!newData) {
+                shopProductsWithImageUrls.value = null
+                return
+            }
+
+            if (myshop.value?.verified) {
+                // Generate URL for verified shops
+                shopProductsWithImageUrls.value = newData.map((item) => {
+                    const imgUrl = supabase.storage.from(shopId).getPublicUrl("productImgs/" + item.id + "/mainImg")
+                        .data.publicUrl
+                    return { ...item, imgUrl }
+                })
+            } else {
+                const productIds = newData.map((item) => "productImgs/" + item.id + "/mainImg")
+                const { data: urlData, error } = await supabase.storage.from(shopId).createSignedUrls(productIds, 3600)
+                if (error) {
+                    throw error
+                }
+                shopProductsWithImageUrls.value = newData.map((item, index) => ({ ...item, imgUrl: urlData[index].signedUrl }))
+            }
+        },
+        { immediate: true }
+    )
+    return { shopProducts, shopProductsWithImageUrls, refreshShopProducts, shopProductsPending }
 }
