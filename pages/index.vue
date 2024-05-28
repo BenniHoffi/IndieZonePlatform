@@ -17,16 +17,17 @@
         </DevOnly>
         <HomeTopSection />
 
-        <ShowcaseSection title="Neu in deiner IndieZone" :cards="cards" bg-color="bg-secondary" />
-        <ShowcaseSection title="Eure Lieblinge" :cards="cards" />
-        <ShowcaseSection title="Wir empfehlen" :cards="cards" bg-color="bg-tertiary" />
+        <!-- <ShowcaseSection title="Neu in deiner IndieZone" :cards="newProducts" bg-color="bg-secondary" />
+        <ShowcaseSection title="Eure Lieblinge" :cards="newProducts" />
+        <ShowcaseSection title="Wir empfehlen" :cards="newProducts" bg-color="bg-tertiary" /> -->
     </div>
 </template>
 
 <script lang="ts" setup>
     definePageMeta({
         title: "Home",
+        layout: "default",
     })
 
-    const cards = useProducts()
+    const { newProducts } = await useNewProducts()
 </script>

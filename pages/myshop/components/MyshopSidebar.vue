@@ -1,14 +1,11 @@
 <template>
     <div>
         <Transition>
-            <div v-if="!open" class="absolute left-2 top-2 lg:hidden">
-                <Icon name="material-symbols:menu" @click="open = true" />
-            </div>
             <div
-                v-else
+                v-if="open"
                 :class="minimized ? 'w-[80px] px-3' : 'w-72 px-5'"
-                class="fixed left-0 top-0 flex h-screen cursor-pointer flex-col justify-around overflow-hidden whitespace-nowrap rounded-r-2xl bg-primary py-10 text-white transition-all">
-                <div class="absolute right-4 top-4 lg:hidden" @click="open = false">
+                class="fixed left-0 top-0 z-[999] flex h-screen cursor-pointer flex-col justify-around overflow-hidden whitespace-nowrap rounded-r-2xl bg-primary py-10 text-white transition-all">
+                <div class="absolute right-4 top-4 md:hidden" @click="open = false">
                     <Icon name="material-symbols:close" />
                 </div>
                 <div>
@@ -31,82 +28,29 @@
                     </div>
                     <div class="mx-3 my-3 h-[1px] w-auto bg-outline-variant" />
                     <div class="flex flex-col gap-3">
-                        <NuxtLink
-                            to="/myshop/products"
-                            :class="minimized ? 'justify-center' : ''"
-                            activeClass="bg-secondary text-black hover:bg-secondary"
-                            class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
-                            v-tooltip="minimized ? 'Artikelübersicht' : ''">
-                            <Icon name="material-symbols:interests" />
-                            <div v-if="!minimized">Artikelübersicht</div>
-                        </NuxtLink>
-                        <NuxtLink
-                            to="/myshop/stats"
-                            :class="minimized ? 'justify-center' : ''"
-                            activeClass="bg-secondary text-black hover:bg-secondary"
-                            class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
-                            v-tooltip="minimized ? 'Statistik' : ''">
-                            <Icon name="material-symbols:leaderboard" />
-                            <div v-if="!minimized">Statistik</div>
-                        </NuxtLink>
-                        <NuxtLink
-                            to="/myshop/notifications"
-                            :class="minimized ? 'justify-center' : ''"
-                            activeClass="bg-secondary text-black hover:bg-secondary"
-                            class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
-                            v-tooltip="minimized ? 'Mitteilungen' : ''">
-                            <Icon name="material-symbols:mail" />
-                            <div v-if="!minimized">Mitteilungen</div>
-                        </NuxtLink>
-                        <NuxtLink
-                            to="/myshop/messages"
-                            :class="minimized ? 'justify-center' : ''"
-                            activeClass="bg-secondary text-black hover:bg-secondary"
-                            class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
-                            v-tooltip="minimized ? 'Kundenchats' : ''">
-                            <Icon name="material-symbols:chat-bubble" />
-                            <div v-if="!minimized">Kundenchats</div>
-                        </NuxtLink>
-                        <NuxtLink
-                            to="/myshop/shopview"
-                            :class="minimized ? 'justify-center' : ''"
-                            activeClass="bg-secondary text-black hover:bg-secondary"
-                            class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
-                            v-tooltip="minimized ? 'Shopansicht' : ''">
-                            <Icon name="material-symbols:storefront-outline" />
-                            <div v-if="!minimized">Shopansicht</div>
-                        </NuxtLink>
-                        <NuxtLink
-                            to="/myshop/help"
-                            :class="minimized ? 'justify-center' : ''"
-                            activeClass="bg-secondary text-black hover:bg-secondary"
-                            class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
-                            v-tooltip="minimized ? 'Hilfe und Community' : ''">
-                            <Icon name="material-symbols:diversity-3" />
-                            <div v-if="!minimized" class="whitespace-normal">Hilfe und Community</div>
-                        </NuxtLink>
+                        <MyshopSidebarLink
+                            v-for="link in sidebarLinks"
+                            :key="link.to"
+                            :to="link.to"
+                            :label="link.label"
+                            :icon="link.icon"
+                            :minimized="minimized" />
                     </div>
                 </div>
                 <div :class="minimized ? '' : 'w-full'" class="flex flex-col gap-3">
-                    <NuxtLink
-                        :class="minimized ? 'justify-center' : ''"
-                        activeClass="bg-secondary text-black hover:bg-secondary"
-                        class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
-                        v-tooltip="minimized ? 'Mein Account' : ''">
-                        <Icon name="material-symbols:account-circle" />
-                        <div v-if="!minimized">Mein Account</div>
-                    </NuxtLink>
-                    <NuxtLink
+                    <MyshopSidebarLink
+                        to="/myshop/account"
+                        label="Mein Account"
+                        icon="material-symbols:account-circle"
+                        :minimized="minimized" />
+                    <MyshopSidebarLink
                         to="/myshop/settings"
-                        :class="minimized ? 'justify-center' : ''"
-                        activeClass="bg-secondary text-black hover:bg-secondary"
-                        class="flex w-full items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover"
-                        v-tooltip="minimized ? 'Einstellungen' : ''">
-                        <Icon name="material-symbols:settings" />
-                        <div v-if="!minimized">Einstellungen</div>
-                    </NuxtLink>
+                        label="Einstellungen"
+                        icon="material-symbols:settings"
+                        :minimized="minimized" />
+
                     <div
-                        class="hidden w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover lg:flex"
+                        class="hidden w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-1 text-xl hover:bg-primary-hover md:flex"
                         @click="minimized = !minimized">
                         <Icon :class="minimized ? '' : 'rotate-180'" name="material-symbols:double-arrow" />
                     </div>
@@ -117,8 +61,20 @@
 </template>
 
 <script setup lang="ts">
-    const open = ref(true)
-    const minimized = useState<boolean>("shopsidebarMinimized", () => false)
+    import { breakpointsTailwind } from "@vueuse/core"
+    const breakpoints = useBreakpoints(breakpointsTailwind)
+    const mdAndLarger = breakpoints.greaterOrEqual("md")
+    const open = defineModel("open", { type: Boolean, default: true })
+    const minimized = defineModel("minimized", { type: Boolean, default: false })
+
+    const sidebarLinks = [
+        { to: "/myshop/products", label: "Artikelübersicht", icon: "material-symbols:interests" },
+        { to: "/myshop/stats", label: "Statistik", icon: "material-symbols:leaderboard" },
+        { to: "/myshop/notifications", label: "Mitteilungen", icon: "material-symbols:mail" },
+        { to: "/myshop/messages", label: "Kundenchats", icon: "material-symbols:chat-bubble" },
+        { to: "/myshop/shopview", label: "Shopansicht", icon: "material-symbols:storefront-outline" },
+        { to: "/myshop/help", label: "Hilfe & Community", icon: "material-symbols:diversity-3" },
+    ]
 </script>
 
 <style scoped>

@@ -4,8 +4,7 @@ import formKitTailwind from "@formkit/themes/tailwindcss"
 
 export default <Partial<Config>>{
     plugins: [formKitTailwind],
-    content: [`./formkit-tailwind-theme.ts`, `./node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}`],
-    important: true,
+    content: [`presets/**/*.{js,vue,ts}`, `./formkit-tailwind-theme.ts`, `./node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}`],
     theme: {
         screens: {
             xxs: "385px",
@@ -38,15 +37,15 @@ export default <Partial<Config>>{
             },
             colors: {
                 primary: "#1A2933",
-                "primary-10": "#0D141A",
-                "primary-20": "#1A2933",
-                "primary-30": "#273E4D",
-                "primary-40": "#345266",
-                "primary-50": "#416780",
-                "primary-60": "#547D99",
-                "primary-70": "#749AB2",
-                "primary-80": "#95B6CC",
-                "primary-90": "#B8D3E5",
+                "primary-100": "#0D141A",
+                "primary-200": "#1A2933",
+                "primary-300": "#273E4D",
+                "primary-400": "#345266",
+                "primary-500": "#416780",
+                "primary-600": "#547D99",
+                "primary-700": "#749AB2",
+                "primary-800": "#95B6CC",
+                "primary-900": "#B8D3E5",
                 "primary-hover": "#273E4D",
                 secondary: "#99D100",
                 "secondary-10": "#131A00",

@@ -1,6 +1,6 @@
 <template>
-    <div class="relative z-50">
-        <Transition>
+    <nav>
+        <div class="relative z-50">
             <div
                 v-if="open"
                 :class="minimized ? 'w-[80px] px-3' : 'w-72 px-5'"
@@ -99,29 +99,11 @@
                     </div>
                 </div>
             </div>
-        </Transition>
-    </div>
+        </div>
+    </nav>
 </template>
 
 <script setup lang="ts">
     const open = defineModel()
-    const minimized = useState<boolean>("usersidebarMinimized", () => false)
+    const minimized = defineModel("minimized", { type: Boolean, default: false })
 </script>
-
-<style scoped>
-    .v-enter-from {
-        transform: translateX(-100%);
-    }
-    .v-enter-active {
-        transition: transform 0.3s ease;
-    }
-    .v-leave-from {
-        transform: translateX(0);
-    }
-    .v-leave-active {
-        transition: transform 0.3s ease;
-    }
-    .v-leave-to {
-        transform: translateX(-100%);
-    }
-</style>
